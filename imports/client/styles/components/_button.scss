@@ -1,0 +1,25 @@
+.button {
+  background: transparent;
+  border: 1px solid #555555;
+  color:#555555;
+  cursor:pointer;
+  line-height: 1;
+  font-weight: 300;
+  margin-left: 1.3rem;
+  outline:none;
+  padding:1.3rem;
+  transition: background .5s ease;
+
+  &:hover, &:focus {
+    background: #e8e8e8;
+
+  }
+  &:active {
+    background: #cccccc;
+    transform: scale(1.2);
+    transition : transform .5s ease;
+  }
+}
+.button--submit {
+  margin-top: 2rem;
+}
