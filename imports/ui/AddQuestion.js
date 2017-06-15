@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import QuestionBox from './QuestionBox';
 import RadioBoxList from './RadioBoxList';
 import { Questions } from './../api/Questions';
+import { Meteor } from 'meteor/meteor';
+import PropTypes from 'prop-types';
 
 export default class AddQuestion extends Component {
   constructor(props) {
@@ -13,7 +15,8 @@ export default class AddQuestion extends Component {
       currentResponse : '',
       question : '',
       radioboxes : [],
-      submitted : false
+      submitted : false,
+      viewID : ''
       };
       this.updateQuestion = this.updateQuestion.bind(this);
       this.updateResponses = this.updateResponses.bind(this);
@@ -23,6 +26,10 @@ export default class AddQuestion extends Component {
       this.createForm = this.createForm.bind(this);
 
   }
+  componentWillReceiveProps(nextProps) {
+  if (nextProps.location !== this.props.location) {
+  }
+}
   updateQuestion(e){
     this.setState({
      currentQuestion: e.target.value
@@ -45,6 +52,7 @@ export default class AddQuestion extends Component {
       radioboxes : this.state.radioboxes.concat([this.state.currentResponse]),
       currentResponse :''
     });
+    this.refs.radioBox.value = '';
   }
   handleStatus(){
     this.setState({
@@ -61,7 +69,22 @@ export default class AddQuestion extends Component {
       currentResponse : ''
     })
     e.preventDefault();
-    Questions.insert({question : this.state.question, responses : this.state.radioboxes})
+    let feedbacks = this.state.radioboxes.map(response => {
+      return {response, count : 0}
+    });
+    let question = {question : this.state.question, responses : this.state.radioboxes,feedbacks};
+    Meteor.call('questions.insert', question, (err, res) => {
+      if (!err) {
+        this.setState({
+          viewID : res
+        });
+        console.log('ID: ', res);
+        console.log('success');
+      } else {
+        console.log(err.reason)
+      }
+    });
+
   }
   render(){
     return(
@@ -70,19 +93,22 @@ export default class AddQuestion extends Component {
       // how to pass an x amount of radioboxes
       <div>
         {this.state.submitted ?
-        <p className='item item__message'>You have successfully submitted your form. </p> :
+        <p className='item item__message'>You have successfully submitted your form.
+          <a target='_blank' className='button button--anchor' href={`${window.location.href}question/${this.state.viewID}`}>Share</a>
+          <a target='_blank' className='button button--anchor' href={`${window.location.href}charts/${this.state.viewID}`}>Visualize</a>
+        </p> :
         <p className='item item__message'>Upon completation you will get a sharable link.</p>
         }
-        <div className="item">
-            <div className="form">
-              <input maxLength='240' className="form__input" type='text' name='question' onChange={this.updateQuestion} placeholder='Question' />
-              <button className="button" onClick={this.handleQuestion}  type='submit'>Add Question</button>
+        <div className='item'>
+            <div className='form'>
+              <input maxLength='240' className='form__input' type='text' name='question' onChange={this.updateQuestion} placeholder='Question' />
+              <button className='button' onClick={this.handleQuestion}  type='submit'>Add Question</button>
           </div>
         </div>
-        <div className="item">
-          <div className="form">
-          <input className="form__input"  type='text' name='radioboxes' onChange={this.updateResponses} placeholder='RadioBox' />
-          <button className="button" onClick={this.handleResponse}  type='submit'>Add Checkbox</button>
+        <div className='item'>
+          <div className='form'>
+          <input className='form__input' ref='radioBox' type='text' name='radioboxes' onChange={this.updateResponses} placeholder='RadioBox' />
+          <button className='button' onClick={this.handleResponse}  type='submit'>Add Checkbox</button>
           </div>
         </div>
         <QuestionBox question={this.state.question} />
@@ -91,12 +117,12 @@ export default class AddQuestion extends Component {
         {this.state.done && this.state.radioboxes.length > 1 ?
          <div>
             <form  className='form' onSubmit={this.createForm}>
-              <button className="button" type="submit">Create Form</button>
+              <button className='button' type='submit'>Create Form</button>
             </form>
         </div>
        : <div>
-          <p className="item__message">You must fill in the form before submitting.</p>
-          <button className="button button--submit" onClick={this.handleStatus}>Done!</button>
+          <p className='item__message'>You must fill in the form before submitting.</p>
+          <button className='button button--submit' onClick={this.handleStatus}>Done!</button>
         </div>
         }
      </div>

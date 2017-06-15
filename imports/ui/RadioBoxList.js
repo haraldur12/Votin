@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import RadioBox from './RadioBox'
 import FlipMove from 'react-flip-move';
-
+import Message from './Message'
 export default class RadioBoxList extends Component {
   constructor(props){
     super(props);
@@ -10,13 +10,11 @@ export default class RadioBoxList extends Component {
   renderResponses(){
     if(this.props.responses === undefined){
       return (
-          <div className="item">
-            <p className="item__message"> There are no radiboxes in this list :/ </p>
-          </div>
+          <Message message='There are no radioboxes in this list :/' />
         )
     } else {
       return this.props.responses.map((response,index) => {
-        return  <RadioBox key={index} response={response}/>
+        return  <RadioBox onChange={this.props.postVal} key={index} response={response}/>
         });
       }
     }

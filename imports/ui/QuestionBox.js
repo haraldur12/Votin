@@ -1,8 +1,6 @@
 import React , { Component } from 'react';
-import RadioBoxList from './RadioBoxList';
 
-export default class
-Box extends Component {
+export default class QuestionBox extends Component {
   render(){
     return(
       <div>

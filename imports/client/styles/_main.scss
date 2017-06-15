@@ -24,8 +24,10 @@ h1 {
 input, button, select {
   font-size:1.3rem;
 }
+@import './components/charts';
 @import './components/button';
 @import './components/item';
 @import './components/form';
 @import './components/header';
 @import './components/wrapper';
+@import './components/survey';
