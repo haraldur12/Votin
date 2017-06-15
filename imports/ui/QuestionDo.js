@@ -15,11 +15,12 @@ class QuestionDo extends Component {
     this.state = {
       welcome : false,
       submitted : false,
+      inputValue : ''
     }
     this.startSurvey = this.startSurvey.bind(this);
     this.setSurveyValue = this.setSurveyValue.bind(this);
     this.postForm = this.postForm.bind(this);
-
+    this.renderMessage = this.renderMessage.bind(this);
   }
   startSurvey(){
     this.setState({
@@ -37,23 +38,34 @@ class QuestionDo extends Component {
   }
   postForm(){
     let feedback = this.state.inputValue;
-    Meteor.call('questions.update',this.state.id, feedback, (err, res) => {
+    Meteor.call('questions.update',this.state.id, feedback, (err) => {
       if (!err) {
-        console.log('ID: ', res);
         console.log('success');
       } else {
         console.log(err.reason)
       }
     });
-    this.setState({
-      submitted : true
-    })
+    console.log(history)
+    this.props.history.push('/done');
+  }
+  renderMessage(){
+    if(this.state.submitted){
+      return <p className='survey__start'>Thanks!</p>
+    }else {
+      return (
+      <div className='wrapper'>
+       <p className='survey__start'>Welcome!</p>
+        <div className='button__survey--start'>
+          <button className='button button__survey--start--next' onClick={this.startSurvey}>Next</button>
+        </div>
+      </div>
+    )
+    }
   }
   render(){
     return(
       <div>
-        {this.state.welcome
-           ?
+        {this.state.welcome ?
           <div>
           <Header title='Survey' />
           <Message message='Please pick your answer.' />
@@ -65,14 +77,7 @@ class QuestionDo extends Component {
             <button className="button" type="submit">Done!</button>
           </form>
          </div>
-         :
-        <div className='wrapper'>
-          <p className='survey__start'>{!this.state.submitted ? 'Welcome' : 'Thank you!'}</p>
-          <div className='button__survey--start'>
-            <button className='button button__survey--start--next' onClick={this.startSurvey}>Next</button>
-          </div>
-        </div>
-        }
+         :  this.renderMessage() }
       </div>
     )
   }

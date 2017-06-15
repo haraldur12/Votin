@@ -121,7 +121,7 @@ export default class AddQuestion extends Component {
             </form>
         </div>
        : <div>
-          <p className='item__message'>You must fill in the form before submitting.</p>
+          <p className='item__message'>You must fill in the form before submitting. It should have at least two choices.</p>
           <button className='button button--submit' onClick={this.handleStatus}>Done!</button>
         </div>
         }
