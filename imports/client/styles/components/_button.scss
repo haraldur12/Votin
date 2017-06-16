@@ -42,3 +42,9 @@ $blue: #e6faff;
   height :0.5rem;
   line-height: 2;
 }
+@media screen and (max-width: 780px) {
+    .button__survey--start--next  {
+      width: 60%;
+      margin: auto;
+    }
+}

@@ -8,6 +8,7 @@ import PropTypes from 'prop-types';
 import Message from './Message'
 import QuestionBox from './QuestionBox';
 import RadioBoxList from './RadioBoxList';
+import { Redirect } from 'react-router-dom'
 
 class QuestionDo extends Component {
   constructor(props){
@@ -36,7 +37,8 @@ class QuestionDo extends Component {
     console.log(evt.target.value)
     console.log(this.state.inputValue)
   }
-  postForm(){
+  postForm(e){
+    e.preventDefault();
     let feedback = this.state.inputValue;
     Meteor.call('questions.update',this.state.id, feedback, (err) => {
       if (!err) {
@@ -45,13 +47,11 @@ class QuestionDo extends Component {
         console.log(err.reason)
       }
     });
-    console.log(history)
-    this.props.history.push('/done');
+    this.setState({
+      submitted : true
+    })
   }
   renderMessage(){
-    if(this.state.submitted){
-      return <p className='survey__start'>Thanks!</p>
-    }else {
       return (
       <div className='wrapper'>
        <p className='survey__start'>Welcome!</p>
@@ -61,9 +61,13 @@ class QuestionDo extends Component {
       </div>
     )
     }
-  }
   render(){
-    return(
+    if (this.state.submitted) {
+      return (
+        <Redirect to="/done"/>
+      )
+    }
+    return (
       <div>
         {this.state.welcome ?
           <div>
@@ -74,7 +78,7 @@ class QuestionDo extends Component {
             <RadioBoxList responses={this.props.questions ? this.props.questions.responses : []} />
           </div>
           <form  className='form' onSubmit={this.postForm}>
-            <button className="button" type="submit">Done!</button>
+            <button className="button"  type="submit">Done!</button>
           </form>
          </div>
          :  this.renderMessage() }

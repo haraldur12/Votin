@@ -2,3 +2,8 @@
   text-align:center;
   font-size: 10rem;
 }
+@media screen and (max-width: 780px) {
+    .survey__start {
+        font-size: 7rem;
+    }
+}
