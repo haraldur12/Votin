@@ -16,6 +16,7 @@ if (Meteor.isServer) {
     };
     const secondQ = {
       _id: '2',
+      question: 'What is the capital of France ?',
       "responses" : [ "Paris", "Nice", "Narbonne", "Lyon" ],
       "feedbacks" : [ { "response" : "Paris", "count" : 51 },
                       { "response" : "Nice", "count" : 34 },
@@ -34,5 +35,6 @@ if (Meteor.isServer) {
      expect(Questions.findOne({_id : '1'})).toExist();
      expect(Questions.findOne({_id : '2'})).toExist();
    });
+
  });
 }

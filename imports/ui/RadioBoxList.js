@@ -14,7 +14,7 @@ export default class RadioBoxList extends Component {
         )
     } else {
       return this.props.responses.map((response,index) => {
-        return  <RadioBox onChange={this.props.postVal} key={index} response={response}/>
+        return  <RadioBox  key={index} response={response}/>
         });
       }
     }

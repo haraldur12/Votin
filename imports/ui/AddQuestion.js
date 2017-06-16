@@ -26,10 +26,7 @@ export default class AddQuestion extends Component {
       this.createForm = this.createForm.bind(this);
 
   }
-  componentWillReceiveProps(nextProps) {
-  if (nextProps.location !== this.props.location) {
-  }
-}
+
   updateQuestion(e){
     this.setState({
      currentQuestion: e.target.value
@@ -55,11 +52,13 @@ export default class AddQuestion extends Component {
     this.refs.radioBox.value = '';
   }
   handleStatus(){
+    //submit only when state is set to done
     this.setState({
       done : true
     });
   }
   createForm(e){
+    // upon creating the form resets the contents of the form
     this.setState({
       done : false,
       radioboxes : [],
