@@ -6,7 +6,7 @@ export default class App extends Component {
   render(){
     return(
       <div>
-        <Header title='Question Checkbox'/>
+        <Header title='Quantilope'/>
         <div className="wrapper">
           <AddQuestion />
         </div>
