@@ -11,4 +11,4 @@
 
 # Demo
 
-(Demo App)[https://quanti.herokuapp.com]
+[Demo App](https://quanti.herokuapp.com)
