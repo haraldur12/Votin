@@ -62,6 +62,9 @@ class QuestionDo extends Component {
     )
     }
   render(){
+    // https://stackoverflow.com/questions/44534647/react-router-dom-v4-redirect-to-different-route-upon-input-enter-key-press/44589162#44589162
+    // All the other answers I came were unfortunately out of date because of the recent version change.
+    // This was the best solution I could think of right now.
     if (this.state.submitted) {
       return (
         <Redirect to="/done"/>

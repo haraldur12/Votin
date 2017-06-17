@@ -26,6 +26,9 @@ export default class AddQuestion extends Component {
       this.createForm = this.createForm.bind(this);
 
   }
+  componentDidMount(){
+    Meteor.subscribe('questions');
+  }
 
   updateQuestion(e){
     this.setState({
@@ -106,8 +109,8 @@ export default class AddQuestion extends Component {
         </div>
         <div className='item'>
           <div className='form'>
-          <input className='form__input' ref='radioBox' type='text' name='radioboxes' onChange={this.updateResponses} placeholder='RadioBox' />
-          <button className='button' onClick={this.handleResponse}  type='submit'>Add Checkbox</button>
+          <input className='form__input' ref='radioBox' type='text' name='radioboxes' onChange={this.updateResponses} placeholder='Add your choices...' />
+          <button className='button' onClick={this.handleResponse}  type='submit'>Add Choice</button>
           </div>
         </div>
         <QuestionBox question={this.state.question} />

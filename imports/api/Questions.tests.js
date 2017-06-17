@@ -31,9 +31,10 @@ if (Meteor.isServer) {
    });
 
 
-   it('Should insert new questions to the database', function () {
+   it('Should insert new questions to the database', function (done) {
      expect(Questions.findOne({_id : '1'})).toExist();
      expect(Questions.findOne({_id : '2'})).toExist();
+     done();
    });
 
  });

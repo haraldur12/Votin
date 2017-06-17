@@ -4,16 +4,21 @@ import SimpleSchema from 'simpl-schema';
 const Questions = new Mongo.Collection('questions');
 
 if (Meteor.isServer) {
-  Meteor.publish('questions');
-}
+  Meteor.publish('questions', function questionPublisher() {
+     return Questions.find();
+   });}
 Meteor.methods({
+
   'questions.insert'(question) {
+
     return Questions.insert(question);
   },
+
+
   'questions.update'(_id, feedback) {
 
     Questions.update({_id,"feedbacks.response" : feedback}, {
-      $inc : {"feedbacks.$.count" : 1 } 
+      $inc : {"feedbacks.$.count" : 1 }
     });
   }
 });

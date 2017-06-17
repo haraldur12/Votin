@@ -1,15 +1,26 @@
 import React , { Component } from 'react';
+import RadioBoxList from './RadioBoxList';
 
 export default class QuestionBox extends Component {
+  constructor(props){
+    super(props);
+    this.renderQuestion = this.renderQuestion.bind(this);
+  }
+  renderQuestion(){
+    if(this.props.question){
+      return(
+        <div className="item">
+          <h1>Question</h1>
+          <p className="item__question">{this.props.question}</p>
+        </div>
+      )
+    }
+  }
   render(){
     return(
       <div>
       <div>
-        {this.props.question ?
-          <div className="item">
-            <h1>Question</h1>
-            <p className="item__question">{this.props.question}</p>
-          </div> : <span></span>}
+        {this.renderQuestion()}
       </div>
       <div>
       </div>
