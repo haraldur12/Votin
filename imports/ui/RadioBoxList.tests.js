@@ -12,3 +12,4 @@ if (Meteor.isClient) {
     expect(wrapper.find('span').text()).toBe(questions[0].responses[0]);
   });
 }
+// Failing at the moment because of not rendering child nodes...
