@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch , Redirect } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch  } from 'react-router-dom'
 import App from "./../ui/App"
 import ViewData from "./../ui/Charts/ViewData";
 import ThankPage from './../ui/ThankPage';

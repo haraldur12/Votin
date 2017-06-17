@@ -13,7 +13,6 @@ if (Meteor.isClient) {
       const title = 'Quantilope ';
       const wrapper = mount( <Header title={title}/> );
       const actualTitle = wrapper.find('h1').text();
-
       expect(actualTitle).toBe(title);
     });
 

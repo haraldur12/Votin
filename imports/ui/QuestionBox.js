@@ -1,5 +1,6 @@
 import React , { Component } from 'react';
 import RadioBoxList from './RadioBoxList';
+import PropTypes from 'prop-types';
 
 export default class QuestionBox extends Component {
   constructor(props){
@@ -28,3 +29,7 @@ export default class QuestionBox extends Component {
     )
   }
 }
+
+QuestionBox.propTypes = {
+  question: PropTypes.string.isRequired
+};

@@ -15,6 +15,5 @@ if (Meteor.isClient) {
       const currentQuestion = wrapper.find('p').text();
       expect(currentQuestion).toBe(question);
     });
-
   });
 }

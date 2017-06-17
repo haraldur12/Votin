@@ -6,7 +6,8 @@ const Questions = new Mongo.Collection('questions');
 if (Meteor.isServer) {
   Meteor.publish('questions', function questionPublisher() {
      return Questions.find();
-   });}
+   });
+ }
 Meteor.methods({
 
   'questions.insert'(question) {

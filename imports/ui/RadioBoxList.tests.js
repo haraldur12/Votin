@@ -12,7 +12,6 @@ if (Meteor.isClient) {
   it('should render question responses as inputs',function(){
     const wrapper = mount( <RadioBoxList responses={questions[0].responses}/> );
     expect(wrapper.find("span").first().text()).toBe(questions[0].responses[0]);
-  });
-
+   });
   });
 }

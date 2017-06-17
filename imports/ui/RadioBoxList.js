@@ -24,7 +24,6 @@ export default class RadioBoxList extends Component {
       <FlipMove  duration={350} easing="ease-out">
         {this.renderResponses()}
       </FlipMove>
-
       </div>
     )
   }
