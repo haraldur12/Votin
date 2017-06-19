@@ -2,7 +2,6 @@ import React , { Component } from 'react';
 import Header from './Header'
 import { Questions } from './../api/Questions';
 import { Tracker } from 'meteor/tracker';
-import CurrentQuestion from './CurrentQuestion';
 import { createContainer } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import Message from './Message'
@@ -96,6 +95,6 @@ QuestionDo.propTypes = {
 export default createContainer((props) => {
   Meteor.subscribe('questions');
   return {
-    questions: Questions.findOne({_id:props.id})
+    questions: Questions.findOne({_id: props.match.params.id})
   };
 }, QuestionDo);

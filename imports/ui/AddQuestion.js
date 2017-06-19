@@ -3,7 +3,6 @@ import QuestionBox from './QuestionBox';
 import RadioBoxList from './RadioBoxList';
 import { Questions } from './../api/Questions';
 import { Meteor } from 'meteor/meteor';
-import PropTypes from 'prop-types';
 
 export default class AddQuestion extends Component {
   constructor(props) {
@@ -93,15 +92,33 @@ export default class AddQuestion extends Component {
       <div>
         {this.state.submitted ?
           <p className="item item__message">You have successfully submitted your form.
-          <a target="_blank" className="button button--anchor" href={`${window.location.href}question/${this.state.viewID}`}>Share</a>
-            <a target="_blank" className="button button--anchor" href={`${window.location.href}charts/${this.state.viewID}`}>Visualize</a>
+              <a
+                target="_blank" className="button button--anchor"
+                href={`${window.location.href}question/${this.state.viewID}`}
+              >Share</a>
+            <a
+              target="_blank"
+              className="button button--anchor"
+              href={`${window.location.href}charts/${this.state.viewID}`}
+            >Visualize</a>
           </p> :
           <p className="item item__message">Upon completation you will get a sharable link.</p>
         }
         <div className="item">
           <div className="form">
-            <input maxLength="240" className="form__input" type="text" name="question" onChange={this.updateQuestion} placeholder="Question" />
-            <button className="button" onClick={this.handleQuestion} type="submit">Add Question</button>
+            <input
+              maxLength="240"
+              className="form__input"
+              type="text" name="question"
+              onChange={this.updateQuestion}
+              placeholder="Question"
+            />
+            <button
+              className="button"
+              onClick={this.handleQuestion}
+              type="submit"
+            >
+                    Add Question</button>
           </div>
         </div>
         <div className="item">

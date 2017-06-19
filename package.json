@@ -16,7 +16,8 @@
     "eslint-plugin-meteor": "^4.0.0",
     "eslint-plugin-react": "^7.1.0",
     "react-dom": "^15.6.1",
-    "react-test-renderer": "^15.6.1"
+    "react-test-renderer": "^15.6.1",
+    "uglify-js-brunch": "^2.10.0"
   },
   "dependencies": {
     "babel-runtime": "^6.20.0",

@@ -4,13 +4,13 @@ import App from "./../ui/App"
 import ViewData from "./../ui/Charts/ViewData";
 import ThankPage from './../ui/ThankPage';
 
-import CurrentQuestion from './../ui/CurrentQuestion';
+import QuestionDo from './../ui/QuestionDo';
 
 export const renderRoutes = () => (
    <Router>
     <div>
       <Route exact path="/" component={App}/>
-      <Route path="/question/:id" component={CurrentQuestion}/>
+      <Route path="/question/:id" component={QuestionDo}/>
       <Route path="/charts/:id" component={ViewData}/>
       <Route path="/done" component={ThankPage}/>
     </div>
