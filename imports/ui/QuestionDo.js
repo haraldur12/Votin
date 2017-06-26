@@ -39,7 +39,7 @@ class QuestionDo extends Component {
   postForm(e){
     e.preventDefault();
     let feedback = this.state.inputValue;
-    Meteor.call('questions.update',this.state.id, feedback, (err) => {
+    Meteor.call('feedbacks.update',this.state.id, feedback, (err) => {
       if (!err) {
         console.log('success');
       } else {
