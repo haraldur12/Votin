@@ -1,5 +1,5 @@
+import { Meteor } from 'meteor/meteor';
 import { Mongo } from 'meteor/mongo';
-import SimpleSchema from 'simpl-schema';
 
 const Questions = new Mongo.Collection('questions');
 
@@ -15,7 +15,7 @@ Meteor.methods({
     return Questions.insert(question);
   },
 
-
+  // the name should correspond to the method
   'questions.update'(_id, feedback) {
 
     Questions.update({_id,"feedbacks.response" : feedback}, {
