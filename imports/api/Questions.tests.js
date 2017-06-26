@@ -36,10 +36,5 @@ if (Meteor.isServer) {
       expect(Questions.findOne({ _id: '2' })).toExist();
       done();
     });
-    it('Should update feedback', (done) => {
-      expect(Questions.findOne({ _id: '1' })).toExist();
-      expect(Questions.findOne({ _id: '2' })).toExist();
-      done();
-    });
   });
 }
