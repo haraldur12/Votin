@@ -36,9 +36,10 @@
   the author states
 
   ```
-  We have a plan to alter the core of enzyme in the future such that this problem won't occur again, but in the meantime, the current behavior will not be changing.
+  We have a plan to alter the core of enzyme in the future such that this problem won't occur again,
+  but in the meantime, the current behavior will not be changing.
   ```
-   
+
 # Demo
 
 [Demo App](https://quanti.herokuapp.com)
