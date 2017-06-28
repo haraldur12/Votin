@@ -1,8 +1,17 @@
-language: node_js
-node_js:
-  - "7"
-    before_install:
-  - "curl -L https://raw.githubusercontent.com/arunoda/travis-ci-meteor-packages/master/configure.sh | /bin/sh"
-    before_script:
-  - "export PATH=$HOME/.meteor:$PATH"
+sudo: false
 
+language: node_js
+
+before_install:
+  - curl https://install.meteor.com | /bin/sh
+  - export PATH="$HOME/.meteor:$PATH"
+
+script:
+  - meteor build $HOME/build.tgz
+
+cache:
+  directories:
+    - node_modules
+
+before_script:
+  - meteor npm install
