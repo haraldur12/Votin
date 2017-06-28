@@ -5,45 +5,32 @@
     "start": "meteor run",
     "test": "meteor test --driver-package=practicalmeteor:mocha"
   },
+  "dependencies": {
+    "babel-runtime": "6.18.0",
+    "meteor-node-stubs": "~0.2.0",
+    "prop-types": "^15.5.10",
+    "react": "^15.6.1",
+    "react-dom": "^15.4.1",
+    "react-flip-move": "^2.9.14",
+    "react-github-fork-ribbon": "^0.5.0",
+    "react-router": "^3.0.0",
+    "react-router-dom": "^4.1.1",
+    "react-test-renderer": "^15.6.1",
+    "recharts": "^1.0.0-alpha.1"
+  },
+  "engines": {
+    "node": "4.6.2"
+  },
   "devDependencies": {
-    "babel-eslint": "^6.1.2",
-    "enzyme": "^2.8.2",
+    "enzyme": "^2.7.1",
+    "expect": "^1.20.2",
     "eslint": "^3.5.0",
     "eslint-config-airbnb": "^11.1.0",
     "eslint-import-resolver-meteor": "^0.3.3",
     "eslint-plugin-import": "^1.15.0",
     "eslint-plugin-jsx-a11y": "^2.2.2",
     "eslint-plugin-meteor": "^4.0.0",
-    "eslint-plugin-react": "^7.1.0",
-    "react-dom": "^15.6.1",
-    "react-test-renderer": "^15.6.1",
-    "uglify-js-brunch": "^2.10.0"
-  },
-  "dependencies": {
-    "babel-runtime": "^6.20.0",
-    "enzyme": "^2.8.2",
-    "install": "^0.10.1",
-    "meteor-node-stubs": "~0.2.4",
-    "npm": "^5.0.3",
-    "prop-types": "^15.5.10",
-    "query-string": "^4.3.4",
-    "react": "^15.6.1",
-    "react-addons-test-utils": "^15.6.0",
-    "react-bar-chart": "^0.1.2",
-    "react-bootstrap": "^0.31.0",
-    "react-dom": "^15.5.4",
-    "react-flip-move": "^2.9.14",
-    "react-form": "^1.2.8",
-    "react-github-fork-ribbon": "^0.5.0",
-    "react-router-dom": "^4.1.1",
-    "react-test-renderer": "^15.6.1",
-    "recharts": "^1.0.0-alpha.1",
-    "simpl-schema": "^0.3.0"
-  },
-  "eslintConfig": {
-    "parser": "babel-eslint",
-    "parserOptions": {
-      "allowImportExportEverywhere": true
-    }
+    "eslint-plugin-react": "^6.3.0",
+    "react-addons-test-utils": "^15.4.1"
   }
 }

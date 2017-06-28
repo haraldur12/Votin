@@ -1,14 +1,18 @@
 import React, { Component } from 'react';
+import { Meteor } from 'meteor/meteor';
+
 import QuestionBox from './QuestionBox';
 import RadioBoxList from './RadioBoxList';
-import { Questions } from './../api/Questions';
-import { Meteor } from 'meteor/meteor';
+import FormShare from './Form/FormShare';
+import FormQuestion from './Form/FormQuestion';
+import FormChoice from './Form/FormChoice';
+import FormCreate from './Form/FormCreate';
+import FormDone from './Form/FormDone';
 
 export default class AddQuestion extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      date: new Date(),
       done: false,
       currentQuestion: '',
       currentResponse: '',
@@ -24,10 +28,6 @@ export default class AddQuestion extends Component {
     this.handleStatus = this.handleStatus.bind(this);
     this.createForm = this.createForm.bind(this);
   }
-  componentDidMount() {
-    Meteor.subscribe('questions');
-  }
-
   updateQuestion(e) {
     this.setState({
       currentQuestion: e.target.value,
@@ -51,10 +51,8 @@ export default class AddQuestion extends Component {
         currentResponse: '',
       });
     }
-    this.refs.radioBox.value = '';
   }
   handleStatus() {
-    // submit only when state is set to done
     this.setState({
       done: true,
     });
@@ -77,71 +75,21 @@ export default class AddQuestion extends Component {
         this.setState({
           viewID: res,
         });
-        console.log('ID: ', res);
-        console.log('success');
-      } else {
-        console.log(err.reason);
       }
     });
   }
   render() {
     return (
-      // it could be probably divided into a few more components however I had problems figuring out dispatching in
-      // the newer version since I was not upto date. I have done a bit of reading but unfortunately I couldn't figure out
-      // how to pass an x amount of radioboxes
       <div>
-        {this.state.submitted ?
-          <p className="item item__message">You have successfully submitted your form.
-              <a
-                target="_blank" className="button button--anchor"
-                href={`${window.location.href}question/${this.state.viewID}`}
-              >Share</a>
-            <a
-              target="_blank"
-              className="button button--anchor"
-              href={`${window.location.href}charts/${this.state.viewID}`}
-            >Visualize</a>
-          </p> :
-          <p className="item item__message">Upon completation you will get a sharable link.</p>
-        }
-        <div className="item">
-          <div className="form">
-            <input
-              maxLength="240"
-              className="form__input"
-              type="text" name="question"
-              onChange={this.updateQuestion}
-              placeholder="Question"
-            />
-            <button
-              className="button"
-              onClick={this.handleQuestion}
-              type="submit"
-            >
-                    Add Question</button>
-          </div>
-        </div>
-        <div className="item">
-          <div className="form">
-            <input className="form__input" ref="radioBox" type="text" name="radioboxes" onChange={this.updateResponses} placeholder="Add your choices..." />
-            <button className="button" onClick={this.handleResponse} type="submit">Add Choice</button>
-          </div>
-        </div>
+        {this.state.submitted ? <FormShare viewID={this.state.viewID} /> :
+        <p className="item item__message">Upon completation you will get a sharable link.</p>}
+        <FormQuestion updateQuestion={this.updateQuestion} handleQuestion={this.handleQuestion} />
+        <FormChoice updateResponses={this.updateResponses} handleResponse={this.handleResponse} />
         <QuestionBox question={this.state.question} />
         <RadioBoxList responses={this.state.radioboxes} />
-        <div>
-          {this.state.done && this.state.radioboxes.length > 1 ?
-            <div>
-              <form className="form" onSubmit={this.createForm}>
-                <button className="button" type="submit">Create Form</button>
-              </form>
-            </div>
-       : <div>
-         <p className="item__message">You must fill in the form before submitting. It should have at least two choices.</p>
-         <button className="button button--submit" onClick={this.handleStatus}>Done!</button>
-       </div>
-        }
-        </div>
+        {this.state.done && this.state.radioboxes.length > 1 ?
+          <FormCreate submitForm={this.createForm} /> :
+          <FormDone handleStatus={this.handleStatus} /> }
       </div>
     );
   }

@@ -1,9 +1,7 @@
-import React,{ Component } from 'react';
+import React from 'react';
 
-export default class ThankPage extends Component {
-  render(){
-    return(
-      <p className='survey__start'>Thanks!</p>
-    )
-  }
-}
+const ThankPage = () => (
+  <p className="survey__start">Thanks!</p>
+);
+
+export default ThankPage;
