@@ -83,10 +83,10 @@ export default class AddQuestion extends Component {
       <div>
         {this.state.submitted ? <FormShare viewID={this.state.viewID} /> :
         <p className="item item__message">Upon completation you will get a sharable link.</p>}
-        <FormQuestion updateQuestion={this.updateQuestion} handleQuestion={this.handleQuestion} />
-        <FormChoice updateResponses={this.updateResponses} handleResponse={this.handleResponse} />
-        <QuestionBox question={this.state.question} />
-        <RadioBoxList responses={this.state.radioboxes} />
+          <FormQuestion updateQuestion={this.updateQuestion} handleQuestion={this.handleQuestion} />
+          <FormChoice updateResponses={this.updateResponses} handleResponse={this.handleResponse} />
+          <QuestionBox question={this.state.question} />
+          <RadioBoxList responses={this.state.radioboxes} />
         {this.state.done && this.state.radioboxes.length > 1 ?
           <FormCreate submitForm={this.createForm} /> :
           <FormDone handleStatus={this.handleStatus} /> }
