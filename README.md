@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/haraldur12/quantilope-task.svg?branch=master)](https://travis-ci.org/haraldur12/quantilope-task)
+
 # Question Editor
 
 * You are able to specify a question and set unlimited amount of radioboxes.
