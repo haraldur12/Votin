@@ -1,5 +1,9 @@
 [![Build Status](https://travis-ci.org/haraldur12/quantilope-task.svg?branch=master)](https://travis-ci.org/haraldur12/quantilope-task)
 
+[![dependencies Status](https://david-dm.org/haraldur12/quantilope-task/status.svg)](https://david-dm.org/haraldur12/quantilope-task)
+
+[![devDependencies Status](https://david-dm.org/haraldur12/quantilope-task/dev-status.svg)](https://david-dm.org/haraldur12/quantilope-task?type=dev)
+
 # Question Editor
 
 * You are able to specify a question and set unlimited amount of radioboxes.
