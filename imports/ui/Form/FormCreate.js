@@ -1,14 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const FormCreate = ({ submitForm }) => (
+const FormCreate = ({ submitForm, message }) => (
   <div>
     <form className="form" onSubmit={submitForm}>
-      <button className="button" type="submit">Create Form</button>
+      <button className="button" type="submit">{message}</button>
     </form>
   </div>
 );
 FormCreate.propTypes = {
-  submitForm: PropTypes.func
+  submitForm: PropTypes.func,
+  message: PropTypes.string
 };
 export default FormCreate;

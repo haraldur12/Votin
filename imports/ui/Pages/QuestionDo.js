@@ -9,6 +9,7 @@ import { Questions } from '../../api/Questions';
 import Message from '../Components/Message';
 import QuestionBox from '../Components/QuestionBox';
 import RadioBoxList from '../Components/RadioBoxList';
+import FormCreate from '../Form/FormCreate';
 
 class QuestionDo extends Component {
   constructor(props) {
@@ -31,17 +32,14 @@ class QuestionDo extends Component {
   startSurvey() {
     this.setState({
       welcome: true,
-      inputValue: '',
-      id: this.props.questions._id
+      inputValue: ''
     });
   }
   postForm(e) {
     e.preventDefault();
     const feedback = this.state.inputValue;
-    Meteor.call('questions.feedbackUpdate', this.state.id, feedback);
-    this.setState({
-      submitted: true
-    });
+    Meteor.call('questions.feedbackUpdate', this.props.currentQuestionID, feedback);
+    this.setState({ submitted: true });
   }
   renderMessage() {
     return (
@@ -59,10 +57,6 @@ class QuestionDo extends Component {
     );
   }
   render() {
-    // https://stackoverflow.com/questions/44534647/react-router-dom-v4-redirect-to-different-route-upon-input-enter-key-press/44589162#44589162
-    // All the other answers I came across, unfortunately,
-    // were out of date because of the recent version change.
-    // This was the best solution I could think of and find right now.
     if (this.state.submitted) {
       return (
         <Redirect to="/done" />
@@ -80,9 +74,7 @@ class QuestionDo extends Component {
                 responses={this.props.questions ? this.props.questions.responses : []}
               />
             </div>
-            <form className="form" onSubmit={this.postForm}>
-              <button className="button" type="submit">Done!</button>
-            </form>
+            <FormCreate submitForm={this.postForm} message={'Done!'} />
           </div>
          : this.renderMessage() }
       </div>
@@ -90,12 +82,14 @@ class QuestionDo extends Component {
   }
 }
 QuestionDo.propTypes = {
-  questions: PropTypes.object
+  questions: PropTypes.object,
+  currentQuestionID: PropTypes.string
 };
 
 export default createContainer((props) => {
   Meteor.subscribe('questions');
   return {
-    questions: Questions.findOne({ _id: props.match.params.id })
+    questions: Questions.findOne({ _id: props.match.params.id }),
+    currentQuestionID: props.match.params.id
   };
 }, QuestionDo);
