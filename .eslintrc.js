@@ -11,11 +11,12 @@ module.exports = {
         "react/require-extension" : "off",
         "import/no-extraneous-dependencies": ["error", { devDependencies: true, }],
         "react/forbid-prop-types": 0,
-        "comma-dangle": ["error", {"functions": "ignore"}]
+        "comma-dangle": ["error", {"functions": "ignore"}],
+        "import/prefer-default-export": "off"
     },
     settings: {
       "import/resolver": "meteor",
-      "import/core-modules": [ "meteor/meteor" ,"meteor/mongo", "meteor/react-meteor-data"]
+      "import/core-modules": [ "meteor/meteor", "meteor/tracker", "meteor/mongo", "meteor/react-meteor-data"]
     },
     "env" : {
       "mocha" : true,

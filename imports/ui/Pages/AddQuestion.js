@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { Meteor } from 'meteor/meteor';
 
-import QuestionBox from './QuestionBox';
-import RadioBoxList from './RadioBoxList';
-import FormShare from './Form/FormShare';
-import FormQuestion from './Form/FormQuestion';
-import FormChoice from './Form/FormChoice';
-import FormCreate from './Form/FormCreate';
-import FormDone from './Form/FormDone';
+import QuestionBox from '../Components/QuestionBox';
+import RadioBoxList from '../Components/RadioBoxList';
+import FormShare from '../Form/FormShare';
+import FormQuestion from '../Form/FormQuestion';
+import FormChoice from '../Form/FormChoice';
+import FormCreate from '../Form/FormCreate';
+import FormDone from '../Form/FormDone';
 
 export default class AddQuestion extends Component {
   constructor(props) {
@@ -19,7 +19,7 @@ export default class AddQuestion extends Component {
       question: '',
       radioboxes: [],
       submitted: false,
-      viewID: '',
+      viewID: ''
     };
     this.updateQuestion = this.updateQuestion.bind(this);
     this.updateResponses = this.updateResponses.bind(this);
@@ -30,31 +30,31 @@ export default class AddQuestion extends Component {
   }
   updateQuestion(e) {
     this.setState({
-      currentQuestion: e.target.value,
+      currentQuestion: e.target.value
     });
   }
   updateResponses(e) {
     this.setState({
-      currentResponse: e.target.value,
+      currentResponse: e.target.value
     });
   }
 
   handleQuestion() {
     this.setState({
-      question: this.state.currentQuestion,
+      question: this.state.currentQuestion
     });
   }
   handleResponse() {
     if (this.state.currentResponse !== '') {
       this.setState({
         radioboxes: this.state.radioboxes.concat([this.state.currentResponse]),
-        currentResponse: '',
+        currentResponse: ''
       });
     }
   }
   handleStatus() {
     this.setState({
-      done: true,
+      done: true
     });
   }
   createForm(e) {
@@ -65,7 +65,7 @@ export default class AddQuestion extends Component {
       question: '',
       submitted: true,
       currentQuestion: '',
-      currentResponse: '',
+      currentResponse: ''
     });
     e.preventDefault();
     const feedbacks = this.state.radioboxes.map(response => ({ response, count: 0 }));
@@ -73,7 +73,7 @@ export default class AddQuestion extends Component {
     Meteor.call('questions.insert', question, (err, res) => {
       if (!err) {
         this.setState({
-          viewID: res,
+          viewID: res
         });
       }
     });

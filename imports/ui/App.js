@@ -1,8 +1,8 @@
 import React from 'react';
 import GitHubForkRibbon from 'react-github-fork-ribbon';
 
-import Header from './Header';
-import AddQuestion from './AddQuestion';
+import Header from './Components/Header';
+import AddQuestion from './Pages/AddQuestion';
 
 const App = () => (
   <div>

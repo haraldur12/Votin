@@ -2,9 +2,9 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import App from './../ui/App';
 import ViewData from './../ui/Charts/ViewData';
-import ThankPage from './../ui/ThankPage';
+import ThankPage from './../ui/Components/ThankPage';
 
-import QuestionDo from './../ui/QuestionDo';
+import QuestionDo from './../ui/Pages/QuestionDo';
 
 export const renderRoutes = () => (
   <Router>

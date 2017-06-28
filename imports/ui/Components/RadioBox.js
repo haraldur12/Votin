@@ -16,5 +16,5 @@ export default class RadioBox extends Component {
   }
 }
 RadioBox.propTypes = {
-  response: PropTypes.string.isRequired,
+  response: PropTypes.string.isRequired
 };

@@ -4,11 +4,11 @@ import { createContainer } from 'meteor/react-meteor-data';
 import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-import Header from './Header';
-import { Questions } from './../api/Questions';
-import Message from './Message';
-import QuestionBox from './QuestionBox';
-import RadioBoxList from './RadioBoxList';
+import Header from '../Components/Header';
+import { Questions } from '../../api/Questions';
+import Message from '../Components/Message';
+import QuestionBox from '../Components/QuestionBox';
+import RadioBoxList from '../Components/RadioBoxList';
 
 class QuestionDo extends Component {
   constructor(props) {

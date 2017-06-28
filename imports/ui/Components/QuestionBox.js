@@ -13,7 +13,7 @@ const QuestionBox = ({ question }) => (
 );
 
 QuestionBox.propTypes = {
-  question: PropTypes.string.isRequired,
+  question: PropTypes.string.isRequired
 };
 
 export default QuestionBox;

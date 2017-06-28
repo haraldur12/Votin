@@ -1,12 +1,13 @@
-import React , { Component } from 'react';
-import Header from './../Header'
+import React, { Component } from 'react';
+
+import Header from './../Components/Header'
 import ChartIndex from './ChartIndex';
 
 export default class ViewData extends Component {
-  render(){
-    return(
+  render() {
+    return (
       <div>
-        <Header title='Showing results for your question' />
+        <Header title="Showing results for your question" />
         <ChartIndex id={this.props.match.params.id} />
       </div>
     )

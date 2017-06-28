@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import { Meteor } from 'meteor/meteor';
 import { createContainer } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
-import { Questions } from './../../api/Questions';
 import { ResponsiveContainer, BarChart, Bar, XAxis, YAxis, Tooltip, Legend } from 'recharts';
-import QuestionBox from './../QuestionBox';
+
+import { Questions } from './../../api/Questions';
+import QuestionBox from './../Components/QuestionBox';
 
 class ChartIndex extends Component {
   renderData() {
@@ -42,12 +43,12 @@ class ChartIndex extends Component {
   }
 }
 ChartIndex.propTypes = {
-  viewdata: PropTypes.object.isRequired,
+  viewdata: PropTypes.object
 };
 
 export default createContainer((props) => {
   Meteor.subscribe('questions');
   return {
-    viewdata: Questions.findOne({ _id: props.id }),
+    viewdata: Questions.findOne({ _id: props.id })
   };
 }, ChartIndex);

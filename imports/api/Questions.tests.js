@@ -11,7 +11,7 @@ if (Meteor.isServer) {
       feedbacks: [{ response: 'Madrid', count: 9 },
                       { response: 'Malaga', count: 3 },
                       { response: 'Almeria', count: 2 },
-                      { response: 'Barcelona', count: 3 }],
+                      { response: 'Barcelona', count: 3 }]
     };
     const secondQ = {
       _id: '2',
@@ -20,7 +20,7 @@ if (Meteor.isServer) {
       feedbacks: [{ response: 'Paris', count: 45 },
                       { response: 'Nice', count: 43 },
                       { response: 'Narbonne', count: 23 },
-                      { response: 'Lyon', count: 12 }],
+                      { response: 'Lyon', count: 12 }]
     };
 
     beforeEach(() => {

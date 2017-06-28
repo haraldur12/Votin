@@ -3,7 +3,7 @@ import expect from 'expect';
 import { Meteor } from 'meteor/meteor';
 import { mount } from 'enzyme';
 
-import { questions } from '../fixtures/fixtures';
+import { questions } from '../../fixtures/fixtures';
 import RadioBoxList from './RadioBoxList';
 
 if (Meteor.isClient) {
