@@ -21,3 +21,5 @@ fourseven:scss
 react-meteor-data
 aldeed:simple-schema
 practicalmeteor:mocha
+accounts-password
+session

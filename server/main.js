@@ -1,1 +1,2 @@
-import '../imports/api/Questions.js';
+import '../imports/api/Questions';
+import '../imports/api/Users';

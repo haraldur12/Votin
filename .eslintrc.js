@@ -16,7 +16,7 @@ module.exports = {
     },
     settings: {
       "import/resolver": "meteor",
-      "import/core-modules": [ "meteor/meteor", "meteor/tracker", "meteor/mongo", "meteor/react-meteor-data"]
+      "import/core-modules": [ "meteor/meteor", "meteor/tracker", "meteor/mongo", "meteor/react-meteor-data", "meteor/accounts-base"]
     },
     "env" : {
       "mocha" : true,

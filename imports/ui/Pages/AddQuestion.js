@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Meteor } from 'meteor/meteor';
+import { Redirect } from 'react-router-dom';
 
 import QuestionBox from '../Components/QuestionBox';
 import RadioBoxList from '../Components/RadioBoxList';
@@ -19,7 +20,8 @@ export default class AddQuestion extends Component {
       question: '',
       radioboxes: [],
       submitted: false,
-      viewID: ''
+      viewID: '',
+      loggedIn: !!Meteor.userId()
     };
     this.updateQuestion = this.updateQuestion.bind(this);
     this.updateResponses = this.updateResponses.bind(this);
@@ -79,6 +81,11 @@ export default class AddQuestion extends Component {
     });
   }
   render() {
+    if (!this.state.loggedIn) {
+      return (
+        <Redirect to="/login" />
+      );
+    }
     return (
       <div>
         {this.state.submitted ? <FormShare viewID={this.state.viewID} /> :

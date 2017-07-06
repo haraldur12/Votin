@@ -13,4 +13,5 @@ const FormDone = ({ handleStatus }) => (
 FormDone.propTypes = {
   handleStatus: PropTypes.func
 };
+
 export default FormDone;

@@ -1,0 +1,18 @@
+.motto {
+	position: relative;
+	top: 200px;
+	left: 460px;
+	z-index: 2;
+}
+
+.motto__container {
+	float: left;
+	color: black;
+	font-family: 'Exo', sans-serif;
+	font-size: 35px !important;
+	font-weight: 200;
+}
+
+.motto__text {
+	color: #5379fa !important;
+}
