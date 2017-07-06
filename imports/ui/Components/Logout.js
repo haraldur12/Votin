@@ -25,7 +25,7 @@ export default class Logout extends Component {
       <div>
         { this.state.loggedIn ?
           <div>
-            <button className="button" onClick={this.onLogout}> Logout </button>
+            <button className="button button__logout" onClick={this.onLogout}> Logout </button>
           </div> : null }
       </div>
     );
