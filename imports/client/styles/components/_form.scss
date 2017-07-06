@@ -7,3 +7,15 @@
   flex-grow: 1;
   padding:0 1.3rem;
 }
+.form__share {
+  display:flex;
+  background: #ffffff;
+  border: 1px solid #e8e8e8;
+  margin-bottom: 1.3rem;
+  padding:1.3rem;
+  justify-content: space-between;
+}
+.form__share__buttons {
+  display: flex;
+  justify-content: flex-end;
+}

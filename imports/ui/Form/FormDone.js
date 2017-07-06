@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const FormDone = ({ handleStatus }) => (
   <div>
-    <p className="item__message">
+    <p className="item item__message">
      You must fill in the form before submitting. It should have at least two choices.
    </p>
     <button className="button button--submit" onClick={handleStatus}>Done!</button>

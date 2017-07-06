@@ -44,18 +44,20 @@ class Login extends Component {
             <h1>Login</h1>
             <form onSubmit={this.onSubmit} className="login__form" >
               <input
+                className="login__form__input"
                 type="email"
                 ref={(el) => { this.user.email = el; }}
                 name="email"
                 placeholder="Email"
               />
               <input
+                className="login__form__input"
                 type="password"
                 ref={(el) => { this.user.password = el; }}
                 name="password"
                 placeholder="Password"
               />
-              <button className="button">Login</button>
+              <button className="button button__login">Login</button>
             </form>
           </div>
         </div>

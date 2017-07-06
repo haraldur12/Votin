@@ -2,8 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const FormShare = ({ viewID }) => (
-  <div>
-    <p className="item item__message">You have successfully submitted your form.
+  <div className="form__share">
+    <p>You have successfully submitted your form.</p>
+    <div className="form__share__buttons">
       <a
         target="_blank"
         rel="noopener noreferrer"
@@ -16,7 +17,13 @@ const FormShare = ({ viewID }) => (
         className="button button--anchor"
         href={`http://localhost:3000/charts/${viewID}`}
       >Visualize</a>
-    </p>
+      <a
+        target="_blank"
+        rel="noopener noreferrer"
+        className="button button--anchor"
+        href={`http://localhost:3000/charts/${viewID}`}
+      >Generate QR</a>
+    </div>
   </div>
 );
 

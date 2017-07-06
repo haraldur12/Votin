@@ -3,7 +3,7 @@ import { Accounts } from 'meteor/accounts-base';
 import { Meteor } from 'meteor/meteor';
 
 import { createContainer } from 'meteor/react-meteor-data';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import ErrorMessage from '../Components/Error';
@@ -49,19 +49,24 @@ class Signup extends Component {
             <h1>Signup</h1>
             <form onSubmit={this.onSubmit} className="login__form" >
               <input
+                className="login__form__input"
                 type="email"
                 ref={(el) => { this.user.email = el; }}
                 name="email"
                 placeholder="Email"
               />
               <input
+                className="login__form__input"
                 type="password"
                 ref={(el) => { this.user.password = el; }}
                 name="password"
                 placeholder="Password"
               />
-              <button className="button">Sign Up</button>
+              <button className="button button__login">Sign Up</button>
             </form>
+            <Link to="/login"><span className="login__text">
+              Have an Account?
+            </span></Link>
           </div>
         </div>
       </div>

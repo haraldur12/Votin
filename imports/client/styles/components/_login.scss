@@ -2,7 +2,7 @@
   align-items: center;
   display: flex;
   justify-content: center;
-  height: 100vh;
+  height: 90vh;
   width: 100vw;
 }
 
@@ -26,4 +26,17 @@
 .login__form {
   display: flex;
   flex-direction: column;
+}
+
+.login__form__input {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+.login__text {
+  margin-top: -2rem;
 }
