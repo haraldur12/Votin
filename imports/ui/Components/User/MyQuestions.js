@@ -9,25 +9,25 @@ const MyQuestions = ({ viewID, message }) => (
         target="_blank"
         rel="noopener noreferrer"
         className="button button--anchor"
-        href={`http://localhost:3000/question/${viewID}`}
+        href={`https://quanti.herokuapp.com/question/${viewID}`}
       >Share</a>
       <a
         target="_blank"
         rel="noopener noreferrer"
         className="button button--anchor"
-        href={`http://localhost:3000/charts/${viewID}`}
+        href={`https://quanti.herokuapp.com/charts/${viewID}`}
       >Visualize</a>
       <a
         target="_blank"
         rel="noopener noreferrer"
         className="button button--anchor"
-        href={`http://localhost:3000/charts/${viewID}`}
+        href={`https://quanti.herokuapp.com/charts/${viewID}`}
       >Generate QR</a>
       <a
         target="_blank"
         rel="noopener noreferrer"
         className="button button--anchor button__remove"
-        href={`http://localhost:3000/charts/${viewID}`}
+        href={`https://quanti.herokuapp.com/charts/${viewID}`}
       >Remove</a>
     </div>
   </div>
