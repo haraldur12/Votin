@@ -1,5 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import { Mongo } from 'meteor/mongo';
+import SimpleSchema from 'simpl-schema';
 
 const Questions = new Mongo.Collection('questions');
 
@@ -15,6 +16,19 @@ Meteor.methods({
         ...question,
         userId: Meteor.userId()
       });
+    }
+  },
+  'questions.removeQuestion': (id) => {
+    if (!Meteor.userId()) {
+      throw new Meteor.Error('not-authorized');
+    } else {
+      new SimpleSchema({
+        id: {
+          type: String,
+          min: 1
+        }
+      }).validate({ id });
+      Questions.remove(id);
     }
   },
   'questions.feedbackUpdate': (_id, feedback) => {

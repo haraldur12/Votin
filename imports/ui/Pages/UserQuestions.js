@@ -23,9 +23,7 @@ class UserQuestions extends Component {
   render() {
     return (
       <div>
-        <ul>
-          {this.renderQuestions()}
-        </ul>
+        {this.renderQuestions()}
       </div>
     );
   }

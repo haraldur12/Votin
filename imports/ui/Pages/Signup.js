@@ -36,7 +36,7 @@ class Signup extends Component {
     });
   }
   render() {
-    if (this.state.loggedIn || this.state.registered) {
+    if (this.state.loggedIn && this.state.registered) {
       return (
         <Redirect to="/surveyEditor" />
       );
