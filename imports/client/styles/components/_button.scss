@@ -1,5 +1,3 @@
-$blue: #e6faff;
-
 .button {
   background: transparent;
   border: 1px solid #555555;
@@ -45,14 +43,13 @@ $blue: #e6faff;
       margin: auto;
     }
 }
-.button__logout {
-  background: $blue;
-  margin-top: 0.5rem;
-  margin-right: 0.5rem;
-}
+
 // signup && login
 .button__login {
   display:block;
   margin-top: 0.5rem;
   margin-right: 0.5rem;
+}
+.button__remove {
+  background: $red;
 }

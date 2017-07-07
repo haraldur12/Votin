@@ -4,9 +4,25 @@ $brand-primary: #397ab1;
 $grey: #dddddd;
 $light-grey: #f9f9f9;
 $dark-grey: #777777;
-
+$blue: #e6faff;
+$orange:#ffb84d;
+$light-blue: #1ad1ff;
+$red: #ff8080;
 // Login form
 
 $login-overlay-bg: $grey;
 $login-bg: white;
 $login-border-color: $grey;
+
+// Not Found
+$bgColor: #f7f7f7;
+$jaggedDistance: 32px;
+
+// boo
+$booSize: $jaggedDistance * 5;
+$booBg: $bgColor;
+$booShadow: darken($booBg, 5%);
+
+// face
+$booFaceSize: round($jaggedDistance / 1.3333);
+$booFaceColor: #9b9b9b;

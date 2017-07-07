@@ -15,7 +15,8 @@ class Signup extends Component {
     this.user = {};
     this.state = {
       error: '',
-      loggedIn: !!Meteor.userId()
+      loggedIn: !!Meteor.userId(),
+      registered: false
     };
     this.onSubmit = this.onSubmit.bind(this);
   }
@@ -30,12 +31,12 @@ class Signup extends Component {
       if (err) {
         this.setState({ error: err.reason });
       } else {
-        this.setState({ error: '' });
+        this.setState({ error: '', registered: true });
       }
     });
   }
   render() {
-    if (this.state.loggedIn) {
+    if (this.state.loggedIn || this.state.registered) {
       return (
         <Redirect to="/surveyEditor" />
       );

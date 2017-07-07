@@ -1,15 +1,14 @@
 .motto {
+	display:flex;
+	justify-content:flex-end;
+	flex-direction: column-reverse;
 	position: relative;
-	top: 200px;
-	left: 460px;
-	z-index: 2;
 }
 
 .motto__container {
-	float: left;
 	color: black;
 	font-family: 'Exo', sans-serif;
-	font-size: 35px !important;
+	font-size: 60px !important;
 	font-weight: 200;
 }
 

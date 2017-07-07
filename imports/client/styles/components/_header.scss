@@ -1,7 +1,21 @@
+@import url('https://fonts.googleapis.com/css?family=Inconsolata');
+
 .title-bar {
   display:flex;
   background: teal;
   color: #ffffff;
   flex-direction: row;
   justify-content: space-between;
+}
+.header__logout {
+  font-family: 'Inconsolata', monospace;
+  background: $orange;
+  margin-top: 0.5rem;
+  margin-right: 0.5rem;
+}
+.header__questions {
+  font-family: 'Inconsolata', monospace;
+  background: $red;
+  margin-top: 0.5rem;
+  margin-right: 0.5rem;
 }

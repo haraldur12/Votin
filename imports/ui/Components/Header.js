@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Meteor } from 'meteor/meteor';
 
-import Logout from './Logout';
+import Logout from './User/Logout';
 
 const Header = ({ title }) => (
   <div className="title-bar">
