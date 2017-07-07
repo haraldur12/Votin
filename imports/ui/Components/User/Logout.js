@@ -44,14 +44,14 @@ export default class Logout extends Component {
         { this.state.loggedIn ?
           <div>
             {location.pathname === '/user/questions' ?
-            <button
-              className="button header__logout"
-              onClick={this.getEditor}
-            > Create </button> :
-            <button
-              className="button header__logout"
-              onClick={this.fetchUserQuestions}
-            > Questions </button>
+              <button
+                className="button header__logout"
+                onClick={this.getEditor}
+              > Create </button> :
+              <button
+                className="button header__logout"
+                onClick={this.fetchUserQuestions}
+              > Questions </button>
           }
 
             <button
