@@ -1,0 +1,16 @@
+.qrcode {
+	position: absolute;
+	top: calc(50% - 15vw);
+	left: calc(50% - 15vw);
+	width: 30vw;
+	height: 30vw;
+}
+
+@media screen and (min-width: 780px) {
+    .qrcode {
+			margin-top:10rem;
+			position: fixed;
+    	left: 60%;
+    	transform: translate(-50%, 0);
+    }
+}

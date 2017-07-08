@@ -13,6 +13,7 @@ import Logout from './../ui/Components/User/Logout';
 import QuestionDo from './../ui/Pages/QuestionDo';
 import Signup from './../ui/Pages/Signup';
 import Login from './../ui/Pages/Login';
+import QRPage from './../ui/Pages/QRPage';
 
 export const renderRoutes = () => (
   <Router>
@@ -25,6 +26,7 @@ export const renderRoutes = () => (
       <Route path="/user/questions" component={UserPage} />
       <Route path="/question/:id" component={QuestionDo} />
       <Route path="/charts/:id" component={ViewData} />
+      <Route path="/qr/:id" component={QRPage} />
       <Route path="/done" component={ThankPage} />
       <Route path="*" component={NotFound} />
     </Switch>
