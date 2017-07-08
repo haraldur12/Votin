@@ -33,12 +33,12 @@ class MyQuestions extends Component {
             className="button button--anchor"
             href={`http://quanti.herokuapp.com/qr/${this.props.viewID}`}
           >Generate QR</a>
-          <button
+          {/* <button
             target="_blank"
             rel="noopener noreferrer"
             className="button button--anchor button__export"
             onClick={this.removeQuestion}
-          >Export</button>
+          >Export</button> */}
           <button
             target="_blank"
             rel="noopener noreferrer"
