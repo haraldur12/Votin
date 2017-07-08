@@ -19,19 +19,19 @@ class MyQuestions extends Component {
             target="_blank"
             rel="noopener noreferrer"
             className="button button--anchor"
-            href={`http://quanti.herokuapp.com//question/${this.props.viewID}`}
+            href={`http://quanti.herokuapp.com/question/${this.props.viewID}`}
           >Share</a>
           <a
             target="_blank"
             rel="noopener noreferrer"
             className="button button--anchor"
-            href={`http://quanti.herokuapp.com//charts/${this.props.viewID}`}
+            href={`http://quanti.herokuapp.com/charts/${this.props.viewID}`}
           >Visualize</a>
           <a
             target="_blank"
             rel="noopener noreferrer"
             className="button button--anchor"
-            href={`http://quanti.herokuapp.com//qr/${this.props.viewID}`}
+            href={`http://quanti.herokuapp.com/qr/${this.props.viewID}`}
           >Generate QR</a>
           <button
             target="_blank"
