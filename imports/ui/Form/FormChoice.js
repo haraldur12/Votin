@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import MdAdd from 'react-icons/lib/md/add'
 
 const FormChoice = ({ updateResponses, handleResponse }) => (
   <div className="item">
@@ -10,7 +11,7 @@ const FormChoice = ({ updateResponses, handleResponse }) => (
         onChange={updateResponses}
         placeholder="Add your choices..."
       />
-      <button className="button" onClick={handleResponse} type="submit">Add Choice</button>
+      <button className="button" onClick={handleResponse} type="submit"><MdAdd /></button>
     </div>
   </div>
 );

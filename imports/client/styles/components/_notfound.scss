@@ -98,8 +98,8 @@ body {
   animation: floating 3s ease-in-out infinite;
 
   .face {
-    width: $booFaceSize;
-    height: $jaggedDistance / 10;
+    width: $booFaceSize / 1;
+    height: $jaggedDistance / 1.5 ;
     border-radius: 5px;
     background-color: $booFaceColor;
     position: absolute;
@@ -111,8 +111,8 @@ body {
     &::after {
       content: '';
       display: block;
-      width: $booFaceSize / 4;
-      height: $booFaceSize / 4;
+      width: $booFaceSize / 2;
+      height: $booFaceSize / 2;
       background-color: $booFaceColor;
       border-radius: 50%;
       position: absolute;
@@ -137,5 +137,5 @@ body {
   margin-right: auto;
   margin-left: auto;
   border-radius: 50%;
-  animation: floatingShadow 3s ease-in-out infinite;
+  animation: floatingShadow 1s ease-in-out infinite;
 }

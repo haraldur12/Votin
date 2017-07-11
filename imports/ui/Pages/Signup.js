@@ -65,9 +65,9 @@ class Signup extends Component {
               />
               <button className="button button__login">Sign Up</button>
             </form>
-            <Link to="/login"><span className="login__text">
+            <Link className="login__text" to="/login">
               Have an Account?
-            </span></Link>
+            </Link>
           </div>
         </div>
       </div>

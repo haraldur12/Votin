@@ -1,10 +1,18 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Meteor } from 'meteor/meteor';
+import { Link } from 'react-router-dom';
+import CopyToClipboard from 'react-copy-to-clipboard';
+import { FaQuestion, FaCopy, FaQrcode, FaEye } from 'react-icons/lib/fa';
+import MdPictureAsPdf from 'react-icons/lib/md/picture-as-pdf';
+import Delete from 'react-icons/lib/md/delete';
 
 class MyQuestions extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      copied: false
+    };
     this.removeQuestion = this.removeQuestion.bind(this);
   }
   removeQuestion() {
@@ -12,39 +20,57 @@ class MyQuestions extends Component {
   }
   render() {
     return (
-      <div className="form__share">
-        <p>{this.props.message}</p>
-        <div className="form__share__buttons">
-          <a
-            target="_blank"
-            rel="noopener noreferrer"
-            className="button button--anchor"
-            href={`http://quanti.herokuapp.com/question/${this.props.viewID}`}
-          >Share</a>
-          <a
-            target="_blank"
-            rel="noopener noreferrer"
-            className="button button--anchor"
-            href={`http://quanti.herokuapp.com/charts/${this.props.viewID}`}
-          >Visualize</a>
-          <a
-            target="_blank"
-            rel="noopener noreferrer"
-            className="button button--anchor"
-            href={`http://quanti.herokuapp.com/qr/${this.props.viewID}`}
-          >Generate QR</a>
-          {/* <button
-            target="_blank"
-            rel="noopener noreferrer"
-            className="button button--anchor button__export"
-            onClick={this.removeQuestion}
-          >Export</button> */}
-          <button
-            target="_blank"
-            rel="noopener noreferrer"
-            className="button button--anchor button__remove"
-            onClick={this.removeQuestion}
-          >Remove</button>
+      <div className="form__container">
+        {this.state.copied ?
+          <p className="item">Link has been successfully copied !</p>
+          : null
+        }
+        <p className="item">
+          {this.props.questionIndex} ) {this.props.question} <FaQuestion />
+        </p>
+        <div className="form__share">
+          <div className="form__share__buttons">
+            <CopyToClipboard
+              text={`http://localhost:3000/question/${this.props.viewID}`}
+              onCopy={() => this.setState({ copied: true })}
+            >
+              <button
+                className="button button--anchor tooltip"
+              >
+                <FaCopy size={30} />
+                <span className="tooltiptext">Copy the question link.</span>
+              </button>
+            </CopyToClipboard>
+            <Link
+              to={`/charts/${this.props.viewID}`}
+              rel="noopener noreferrer"
+              className="button button--anchor tooltip"
+            ><FaEye size={30} />
+              <span className="tooltiptext">Visualize the data.</span>
+            </Link>
+            <Link
+              to={`/qr/${this.props.viewID}`}
+              rel="noopener noreferrer"
+              className="button button--anchor tooltip"
+            ><FaQrcode size={30} />
+              <span className="tooltiptext">Generate a QRCode.</span>
+
+            </Link>
+            <Link
+              to={`/pdf/${this.props.viewID}`}
+              rel="noopener noreferrer"
+              className="button button--anchor tooltip"
+            ><MdPictureAsPdf size={30} />
+              <span className="tooltiptext">Generate a PDF.</span>
+            </Link>
+            <button
+              rel="noopener noreferrer"
+              className="button button--anchor button__remove tooltip"
+              onClick={this.removeQuestion}
+            ><Delete size={30} />
+              <span className="tooltiptext">Delete this question.</span>
+            </button>
+          </div>
         </div>
       </div>
     );
@@ -53,7 +79,8 @@ class MyQuestions extends Component {
 
 MyQuestions.propTypes = {
   viewID: PropTypes.string.isRequired,
-  message: PropTypes.string
+  question: PropTypes.string,
+  questionIndex: PropTypes.number
 };
 
 export default MyQuestions;

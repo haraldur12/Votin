@@ -17,7 +17,12 @@ class UserQuestions extends Component {
   renderQuestions() {
     return this.props.questions.map((question, index) => {
       const questionToRender = question.question;
-      return <QuestionList key={index} question={questionToRender} id={question._id} />;
+      return (<QuestionList
+        questionIndex={index + 1}
+        key={index}
+        question={questionToRender}
+        id={question._id}
+      />);
     });
   }
   render() {

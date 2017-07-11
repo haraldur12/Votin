@@ -1,9 +1,88 @@
-.home__container {
-  align-items:center;
-  display: flex;
-  flex-direction: row;
-  margin-right:auto;
-  margin-left:auto;
-  height: 480px;
-  width: 360px;
+.landing {
+  position: fixed;
+  margin-top: 5rem;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: linear-gradient(270deg, #90b8d1, #abcde3, #5fb3e7);
+background-size: 600% 600%;
+-webkit-animation: AnimationName 30s ease infinite;
+-moz-animation: AnimationName 30s ease infinite;
+-o-animation: AnimationName 30s ease infinite;
+animation: AnimationName 30s ease infinite;
+@-webkit-keyframes AnimationName {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+@-moz-keyframes AnimationName {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+@-o-keyframes AnimationName {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+@keyframes AnimationName {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+}
+.landing__full--screen {
+    width: 100%;
+    height: 100%;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+.landing__text {
+  color: #fff;
+  font-weight: 800;
+  font-size: 4em;
+  letter-spacing: -2px;
+  text-align: center;
+  text-shadow: 1px 2px 1px rgba(0, 0, 0, .6);
+  &:after {
+    display: block;
+    color: #fff;
+    letter-spacing: 1px;
+    font-family: 'Poiret One', sans-serif;
+    content: 'Make Your Decision';
+    font-size: .4em;
+    text-align: center;
+  }
+}
+
+.landing__button {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  border-radius: 5%;
+  background: transparent;
+  border: 1px solid #fff;
+  color: #fff;
+  text-align: center;
+  font-size: 1.4em;
+  opacity: .8;
+  padding: 20px 40px;
+  text-decoration: none;
+  transition: all .5s ease;
+  margin: 0 auto;
+  display: block;
+  width: 100px;
+  &:hover {
+    opacity: 2;
+    transform: scale(1.05);
+    background:#66b3ff
+  }
 }

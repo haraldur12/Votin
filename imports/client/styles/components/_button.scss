@@ -9,7 +9,10 @@
   outline:none;
   padding:1.3rem;
   transition: background .5s ease;
-
+  @media screen and (max-width: 720px) {
+    font-size:0.875em;
+    text-align:center;
+  }
   &:hover, &:focus {
     background: #e8e8e8;
 

@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import { Meteor } from 'meteor/meteor';
 import { createContainer } from 'meteor/react-meteor-data';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-
 import ErrorMessage from '../Components/Error';
 import Header from '../Components/Header';
 
@@ -59,6 +58,9 @@ class Login extends Component {
               />
               <button className="button button__login">Login</button>
             </form>
+            <Link className="login__text" to="/signup">
+              Don't Have an Account?
+            </Link>
           </div>
         </div>
       </div>

@@ -5,7 +5,7 @@ import AddQuestion from '../Pages/AddQuestion';
 
 const SurveyStarter = () => (
   <div>
-    <Header title="Quantilope" />
+    <Header title="Create a question" />
     <div className="wrapper">
       <AddQuestion />
     </div>

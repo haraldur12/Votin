@@ -18,9 +18,10 @@
 .login__box {
   background-color: $login-bg;
   border: 1px solid $login-border-color;
-  padding: 2.4rem;
+  padding: 3.4rem;
   text-align: center;
   width: 24rem;
+  height: 24rem;
 }
 
 .login__form {
@@ -38,5 +39,7 @@
     box-sizing: border-box;
 }
 .login__text {
-  margin-top: -2rem;
-}
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+  }

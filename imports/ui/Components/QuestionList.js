@@ -4,15 +4,17 @@ import PropTypes from 'prop-types';
 import MyQuestions from './User/MyQuestions';
 
 
-const QuestionList = ({ question, id }) => (
+const QuestionList = ({ question, id, questionIndex }) => (
   <div className="wrapper">
-    <MyQuestions viewID={id} message={question} />
+    <MyQuestions questionIndex={questionIndex} viewID={id} question={question} />
   </div>
 );
 
 QuestionList.propTypes = {
   question: PropTypes.string.isRequired,
-  id: PropTypes.string.isRequired
+  id: PropTypes.string.isRequired,
+  questionIndex: PropTypes.number.isRequired
+
 };
 
 export default QuestionList;

@@ -12,6 +12,7 @@ import Logout from './../ui/Components/User/Logout';
 
 import QuestionDo from './../ui/Pages/QuestionDo';
 import Signup from './../ui/Pages/Signup';
+import GeneratePDF from './../ui/Pages/GeneratePDF';
 import Login from './../ui/Pages/Login';
 import QRPage from './../ui/Pages/QRPage';
 
@@ -24,6 +25,7 @@ export const renderRoutes = () => (
       <Route path="/login" component={Login} />
       <Route path="/logout" component={Logout} />
       <Route path="/user/questions" component={UserPage} />
+      <Route path="/pdf/:id" component={GeneratePDF} />
       <Route path="/question/:id" component={QuestionDo} />
       <Route path="/charts/:id" component={ViewData} />
       <Route path="/qr/:id" component={QRPage} />

@@ -4,7 +4,7 @@ import Header from '../Components/Header';
 
 const UserPage = () => (
   <div>
-    <Header title={'Your Questions'} />
+    <Header title={'My Questions'} />
     <UserQuestions />
   </div>
 );
