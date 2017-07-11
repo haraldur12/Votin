@@ -14,7 +14,7 @@ const QRPage = props => (
     <div className="wrapper">
       <QuestionBox question={props.questions ? props.questions.question : 'This is not a valid question url.'} />
       <div className="qrcode">
-        <QRCode value={`http://quanti.herokuapp.com/question/${props.currentQuestionID}`} />
+        <QRCode value={`http://votinio.herokuapp.com/question/${props.currentQuestionID}`} />
       </div>
     </div>
   </div>

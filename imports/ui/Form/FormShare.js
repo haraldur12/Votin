@@ -9,19 +9,19 @@ const FormShare = ({ viewID }) => (
         target="_blank"
         rel="noopener noreferrer"
         className="button button--anchor"
-        href={`http://quanti.herokuapp.com/question/${viewID}`}
+        href={`http://votinio.herokuapp.com/question/${viewID}`}
       >Share</a>
       <a
         target="_blank"
         rel="noopener noreferrer"
         className="button button--anchor"
-        href={`http://quanti.herokuapp.com/charts/${viewID}`}
+        href={`http://votinio.herokuapp.com/charts/${viewID}`}
       >Visualize</a>
       <a
         target="_blank"
         rel="noopener noreferrer"
         className="button button--anchor"
-        href={`http://quanti.herokuapp.com/charts/${viewID}`}
+        href={`http://votinio.herokuapp.com/charts/${viewID}`}
       >Generate QR</a>
     </div>
   </div>

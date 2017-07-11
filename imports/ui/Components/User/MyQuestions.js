@@ -31,7 +31,7 @@ class MyQuestions extends Component {
         <div className="form__share">
           <div className="form__share__buttons">
             <CopyToClipboard
-              text={`http://localhost:3000/question/${this.props.viewID}`}
+              text={`http://votinio.herokuapp.com/question/${this.props.viewID}`}
               onCopy={() => this.setState({ copied: true })}
             >
               <button
