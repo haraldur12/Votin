@@ -13,7 +13,7 @@ export default class RadioBox extends Component {
           type="radio"
           value={this.props.response}
         />
-        <span>{this.props.response}</span>
+        <span> {this.props.response}</span>
       </div>
     );
   }

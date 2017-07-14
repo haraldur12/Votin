@@ -47,7 +47,7 @@ ChartIndex.propTypes = {
 };
 
 export default createContainer((props) => {
-  Meteor.subscribe('questions');
+  Meteor.subscribe('currentQuestion', props.id);
   return {
     viewdata: Questions.findOne({ _id: props.id })
   };

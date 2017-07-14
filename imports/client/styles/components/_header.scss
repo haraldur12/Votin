@@ -1,12 +1,14 @@
 @import url('https://fonts.googleapis.com/css?family=Inconsolata');
 
 .title-bar {
-  display:flex;
-  background: teal;
+  display:inline-flex;
+  background: #333300;
   color: #ffffff;
   flex-direction: row;
   justify-content: space-between;
+  width: 100%;
 }
+
 .header__logout {
   font-family: 'Inconsolata', monospace;
   background: $orange;
@@ -25,11 +27,11 @@
   background: transparent;
   margin-top: 0.5rem;
   margin-right: 0.5rem;
-  margin-bottom: 1rem;
   border:none;
-  color:$light-grey;
+  text-decoration: none;
+  color:$light-blue;
   &:hover,&:active,&:focus {
     background: none;
-    color:$light-blue;
+    color:$orange;
   }
 }

@@ -1,0 +1,32 @@
+.private__text{
+    color:teal;
+    text-transform:uppercase;
+    text-align:center;
+  }
+.private {
+  margin: 0 auto;
+  margin-top:100px;
+  width:100px;
+  height:80px;
+  background-color:#434242;
+  border: solid 5px whitesmoke;
+  border-radius:60%;
+  text-align:center;
+
+  &:before,&:after{
+    width:0;
+    height:0;
+    color:whitesmoke;
+    font-size:35px;
+  }
+  &:after{
+    content:"-_-";
+    padding:1rem;
+    animation: blink 2s linear infinite;
+  }
+}
+@keyframes blink{
+  0%   {opacity:1.0;}
+  50%  {opacity:0.0;}
+  100% {opacity:1.0;}
+}

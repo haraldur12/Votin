@@ -9,6 +9,9 @@ import ViewData from './../ui/Charts/ViewData';
 import ThankPage from './../ui/Components/ThankPage';
 import NotFound from './../ui/Components/NotFound';
 import Logout from './../ui/Components/User/Logout';
+import About from './../ui/Components/Site/About';
+import How from './../ui/Components/Site/How';
+import Tos from './../ui/Components/Site/Tos';
 
 import QuestionDo from './../ui/Pages/QuestionDo';
 import Signup from './../ui/Pages/Signup';
@@ -24,6 +27,9 @@ export const renderRoutes = () => (
       <Route path="/signup" component={Signup} />
       <Route path="/login" component={Login} />
       <Route path="/logout" component={Logout} />
+      <Route path="/about" component={About} />
+      <Route path="/how" component={How} />
+      <Route path="/tos" component={Tos} />
       <Route path="/user/questions" component={UserPage} />
       <Route path="/pdf/:id" component={GeneratePDF} />
       <Route path="/question/:id" component={QuestionDo} />

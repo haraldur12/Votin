@@ -26,7 +26,7 @@ QRPage.propTypes = {
 };
 
 export default createContainer((props) => {
-  Meteor.subscribe('questions');
+  Meteor.subscribe('currentQuestion', props.match.params.id);
   return {
     questions: Questions.findOne({ _id: props.match.params.id }),
     currentQuestionID: props.match.params.id

@@ -42,7 +42,8 @@ export default class Logout extends Component {
     return (
       <div>
         { this.state.loggedIn ?
-          <div>
+          <div >
+
             {location.pathname === '/user/questions' ?
               <button
                 className="button header__logout"

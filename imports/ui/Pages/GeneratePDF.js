@@ -21,7 +21,7 @@ export default class GeneratePDF extends Component {
   render() {
     return (
       <div>
-        <Header title={'Download as PDF'} />
+        <Header title={'Export PDF'} />
         <div className="wrapper">
           <ChartIndex ref={(el) => { this.pdf = el; }} id={this.props.match.params.id} />
           <button className="button button--anchor" onClick={this.printDocument}>Download</button>

@@ -5,7 +5,7 @@ import AddQuestion from '../Pages/AddQuestion';
 
 const SurveyStarter = () => (
   <div>
-    <Header title="Create a question" />
+    <Header title="Editor" />
     <div className="wrapper">
       <AddQuestion />
     </div>

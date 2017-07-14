@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Meteor } from 'meteor/meteor';
 import { Link } from 'react-router-dom';
 import CopyToClipboard from 'react-copy-to-clipboard';
-import { FaQuestion, FaCopy, FaQrcode, FaEye } from 'react-icons/lib/fa';
+import { FaUnlockAlt, FaLock, FaQuestion, FaCopy, FaQrcode, FaEye } from 'react-icons/lib/fa';
 import MdPictureAsPdf from 'react-icons/lib/md/picture-as-pdf';
 import Delete from 'react-icons/lib/md/delete';
 
@@ -14,6 +14,11 @@ class MyQuestions extends Component {
       copied: false
     };
     this.removeQuestion = this.removeQuestion.bind(this);
+    this.setPrivacy = this.setPrivacy.bind(this);
+  }
+  setPrivacy() {
+    Meteor.call('questions.setPrivacy', this.props.viewID, !this.props.privacy);
+    console.log(!this.props.privacy);
   }
   removeQuestion() {
     Meteor.call('questions.removeQuestion', this.props.viewID);
@@ -31,7 +36,7 @@ class MyQuestions extends Component {
         <div className="form__share">
           <div className="form__share__buttons">
             <CopyToClipboard
-              text={`http://votinio.herokuapp.com/question/${this.props.viewID}`}
+              text={`http://votinio.herokuapp.co/question/${this.props.viewID}`}
               onCopy={() => this.setState({ copied: true })}
             >
               <button
@@ -43,14 +48,12 @@ class MyQuestions extends Component {
             </CopyToClipboard>
             <Link
               to={`/charts/${this.props.viewID}`}
-              rel="noopener noreferrer"
               className="button button--anchor tooltip"
             ><FaEye size={30} />
               <span className="tooltiptext">Visualize the data.</span>
             </Link>
             <Link
               to={`/qr/${this.props.viewID}`}
-              rel="noopener noreferrer"
               className="button button--anchor tooltip"
             ><FaQrcode size={30} />
               <span className="tooltiptext">Generate a QRCode.</span>
@@ -58,11 +61,17 @@ class MyQuestions extends Component {
             </Link>
             <Link
               to={`/pdf/${this.props.viewID}`}
-              rel="noopener noreferrer"
               className="button button--anchor tooltip"
             ><MdPictureAsPdf size={30} />
               <span className="tooltiptext">Generate a PDF.</span>
             </Link>
+            <button
+              className="button button--anchor tooltip"
+              onClick={this.setPrivacy}
+            >{this.props.privacy ? <FaLock size={30} /> : <FaUnlockAlt size={30} />}
+              <span className="tooltiptext">{this.props.privacy ? 'Unlock the question.' : 'Lock the question.'}
+              </span>
+            </button>
             <button
               rel="noopener noreferrer"
               className="button button--anchor button__remove tooltip"
@@ -80,7 +89,8 @@ class MyQuestions extends Component {
 MyQuestions.propTypes = {
   viewID: PropTypes.string.isRequired,
   question: PropTypes.string,
-  questionIndex: PropTypes.number
+  questionIndex: PropTypes.number,
+  privacy: PropTypes.bool
 };
 
 export default MyQuestions;

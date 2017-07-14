@@ -15,10 +15,39 @@ class Signup extends Component {
     this.user = {};
     this.state = {
       error: '',
-      loggedIn: !!Meteor.userId(),
-      registered: false
+      loggedIn: !!Meteor.userId()
     };
     this.onSubmit = this.onSubmit.bind(this);
+    this.renderForm = this.renderForm.bind(this);
+  }
+  renderForm() {
+    return (
+      <div className="login">
+        <div className="login__box">
+          <h1>Signup</h1>
+          <form onSubmit={this.onSubmit} className="login__form" >
+            <input
+              className="login__form__input"
+              type="email"
+              ref={(el) => { this.user.email = el; }}
+              name="email"
+              placeholder="Email"
+            />
+            <input
+              className="login__form__input"
+              type="password"
+              ref={(el) => { this.user.password = el; }}
+              name="password"
+              placeholder="Password"
+            />
+            <button className="button button__login">Sign Up</button>
+          </form>
+          <Link className="login__text" to="/login">
+          Have an Account?
+        </Link>
+        </div>
+      </div>
+    );
   }
   onSubmit(e) {
     e.preventDefault();
@@ -31,12 +60,12 @@ class Signup extends Component {
       if (err) {
         this.setState({ error: err.reason });
       } else {
-        this.setState({ error: '', registered: true });
+        this.setState({ error: '', registered: !!Meteor.userId });
       }
     });
   }
   render() {
-    if (this.state.loggedIn && this.state.registered) {
+    if (this.state.loggedIn) {
       return (
         <Redirect to="/surveyEditor" />
       );
@@ -45,31 +74,7 @@ class Signup extends Component {
       <div>
         <Header title={'Signup'} />
         {this.state.error ? <ErrorMessage errorMessage={this.state.error} /> : null}
-        <div className="login">
-          <div className="login__box">
-            <h1>Signup</h1>
-            <form onSubmit={this.onSubmit} className="login__form" >
-              <input
-                className="login__form__input"
-                type="email"
-                ref={(el) => { this.user.email = el; }}
-                name="email"
-                placeholder="Email"
-              />
-              <input
-                className="login__form__input"
-                type="password"
-                ref={(el) => { this.user.password = el; }}
-                name="password"
-                placeholder="Password"
-              />
-              <button className="button button__login">Sign Up</button>
-            </form>
-            <Link className="login__text" to="/login">
-              Have an Account?
-            </Link>
-          </div>
-        </div>
+        {this.renderForm()}
       </div>
     );
   }

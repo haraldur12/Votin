@@ -5,6 +5,7 @@ import { Meteor } from 'meteor/meteor';
 
 import { Questions } from '../../api/Questions';
 import QuestionList from '../Components/QuestionList';
+import Message from '../Components/Message';
 
 class UserQuestions extends Component {
   constructor(props) {
@@ -15,6 +16,9 @@ class UserQuestions extends Component {
     this.renderQuestions = this.renderQuestions.bind(this);
   }
   renderQuestions() {
+    if (this.props.questions.length <= 0) { 
+      return (<Message message={'You do not have any questions yet.'} />);
+    }
     return this.props.questions.map((question, index) => {
       const questionToRender = question.question;
       return (<QuestionList
@@ -22,6 +26,7 @@ class UserQuestions extends Component {
         key={index}
         question={questionToRender}
         id={question._id}
+        privacy={question.private}
       />);
     });
   }
@@ -39,7 +44,7 @@ UserQuestions.propTypes = {
 };
 
 export default createContainer(() => {
-  Meteor.subscribe('questions');
+  Meteor.subscribe('UserQuestions', Meteor.userId());
   return {
     questions: Questions.find({ userId: Meteor.userId() }).fetch()
   };

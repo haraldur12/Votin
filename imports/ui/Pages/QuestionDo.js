@@ -10,6 +10,7 @@ import Message from '../Components/Message';
 import QuestionBox from '../Components/QuestionBox';
 import RadioBoxList from '../Components/RadioBoxList';
 import FormCreate from '../Form/FormCreate';
+import Private from '../Components/Private';
 
 class QuestionDo extends Component {
   constructor(props) {
@@ -23,6 +24,7 @@ class QuestionDo extends Component {
     this.setSurveyValue = this.setSurveyValue.bind(this);
     this.postForm = this.postForm.bind(this);
     this.renderMessage = this.renderMessage.bind(this);
+    this.renderQuestion = this.renderQuestion.bind(this);
   }
   setSurveyValue(evt) {
     this.setState({
@@ -56,6 +58,24 @@ class QuestionDo extends Component {
       </div>
     );
   }
+  renderQuestion() {
+    if (this.props.questions.private) {
+      return <Private question={this.props.questions.question} />;
+    }
+    return (
+      <div>
+        <Header title="Survey" />
+        <Message message="Please pick your answer." />
+        <QuestionBox question={this.props.questions ? this.props.questions.question : 'This is not a valid question url.'} />
+        <div onChange={this.setSurveyValue}>
+          <RadioBoxList
+            responses={this.props.questions ? this.props.questions.responses : []}
+          />
+        </div>
+        <FormCreate submitForm={this.postForm} message={'Done!'} />
+      </div>
+    );
+  }
   render() {
     if (this.state.submitted) {
       return (
@@ -65,17 +85,7 @@ class QuestionDo extends Component {
     return (
       <div>
         {this.state.welcome ?
-          <div>
-            <Header title="Survey" />
-            <Message message="Please pick your answer." />
-            <QuestionBox question={this.props.questions ? this.props.questions.question : 'This is not a valid question url.'} />
-            <div onChange={this.setSurveyValue}>
-              <RadioBoxList
-                responses={this.props.questions ? this.props.questions.responses : []}
-              />
-            </div>
-            <FormCreate submitForm={this.postForm} message={'Done!'} />
-          </div>
+            this.renderQuestion()
          : this.renderMessage() }
       </div>
     );
@@ -87,7 +97,7 @@ QuestionDo.propTypes = {
 };
 
 export default createContainer((props) => {
-  Meteor.subscribe('questions');
+  Meteor.subscribe('currentQuestion', props.match.params.id);
   return {
     questions: Questions.findOne({ _id: props.match.params.id }),
     currentQuestionID: props.match.params.id

@@ -4,9 +4,9 @@ import PropTypes from 'prop-types';
 import MyQuestions from './User/MyQuestions';
 
 
-const QuestionList = ({ question, id, questionIndex }) => (
+const QuestionList = ({ question, id, questionIndex, privacy }) => (
   <div className="wrapper">
-    <MyQuestions questionIndex={questionIndex} viewID={id} question={question} />
+    <MyQuestions privacy={privacy} questionIndex={questionIndex} viewID={id} question={question} />
   </div>
 );
 
