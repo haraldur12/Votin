@@ -6,6 +6,7 @@ import { Meteor } from 'meteor/meteor';
 import { Questions } from '../../api/Questions';
 import QuestionList from '../Components/QuestionList';
 import Message from '../Components/Message';
+import ErrorMessage from '../Components/Error';
 
 class UserQuestions extends Component {
   constructor(props) {
@@ -16,7 +17,7 @@ class UserQuestions extends Component {
     this.renderQuestions = this.renderQuestions.bind(this);
   }
   renderQuestions() {
-    if (this.props.questions.length <= 0) { 
+    if (this.props.questions.length <= 0) {
       return (<Message message={'You do not have any questions yet.'} />);
     }
     return this.props.questions.map((question, index) => {

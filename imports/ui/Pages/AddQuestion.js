@@ -9,6 +9,7 @@ import FormQuestion from '../Form/FormQuestion';
 import FormChoice from '../Form/FormChoice';
 import FormCreate from '../Form/FormCreate';
 import FormDone from '../Form/FormDone';
+import ErrorMessage from '../Components/Error';
 
 export default class AddQuestion extends Component {
   constructor(props) {
@@ -42,9 +43,15 @@ export default class AddQuestion extends Component {
   }
 
   handleQuestion() {
-    this.setState({
-      question: this.state.currentQuestion
-    });
+    if (this.state.currentQuestion.length <= 60) {
+      this.setState({
+        error: 'The question must be at least 60 characters'
+      });
+    } else {
+      this.setState({
+        question: this.state.currentQuestion
+      });
+    }
   }
   handleResponse() {
     if (this.state.currentResponse !== '') {
@@ -88,13 +95,14 @@ export default class AddQuestion extends Component {
     }
     return (
       <div>
+        {this.state.error ? <ErrorMessage errorMessage={this.state.error} /> : null}
         {this.state.submitted ? <FormShare viewID={this.state.viewID} /> :
         <p className="item item__message">Upon completation you will get a sharable link.</p>}
         <FormQuestion updateQuestion={this.updateQuestion} handleQuestion={this.handleQuestion} />
         <FormChoice updateResponses={this.updateResponses} handleResponse={this.handleResponse} />
         <QuestionBox question={this.state.question} />
         <RadioBoxList responses={this.state.radioboxes} />
-        {this.state.done && this.state.radioboxes.length > 1 ?
+        {this.state.done && this.state.radioboxes.length > 1 && this.state.question.length > 60 ?
           <FormCreate submitForm={this.createForm} message={'Create Form'} /> :
           <FormDone handleStatus={this.handleStatus} /> }
       </div>

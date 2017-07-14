@@ -20,35 +20,6 @@ class Signup extends Component {
     this.onSubmit = this.onSubmit.bind(this);
     this.renderForm = this.renderForm.bind(this);
   }
-  renderForm() {
-    return (
-      <div className="login">
-        <div className="login__box">
-          <h1>Signup</h1>
-          <form onSubmit={this.onSubmit} className="login__form" >
-            <input
-              className="login__form__input"
-              type="email"
-              ref={(el) => { this.user.email = el; }}
-              name="email"
-              placeholder="Email"
-            />
-            <input
-              className="login__form__input"
-              type="password"
-              ref={(el) => { this.user.password = el; }}
-              name="password"
-              placeholder="Password"
-            />
-            <button className="button button__login">Sign Up</button>
-          </form>
-          <Link className="login__text" to="/login">
-          Have an Account?
-        </Link>
-        </div>
-      </div>
-    );
-  }
   onSubmit(e) {
     e.preventDefault();
     const email = this.user.email.value.trim();
@@ -60,9 +31,38 @@ class Signup extends Component {
       if (err) {
         this.setState({ error: err.reason });
       } else {
-        this.setState({ error: '', registered: !!Meteor.userId });
+        this.setState({ error: '', registered: !!Meteor.userId() });
       }
     });
+  }
+  renderForm() {
+    return this.state.registered ? <Redirect to="/surveyEditor" /> :
+     (<div className="login">
+       <div className="login__box">
+         <h1>Signup</h1>
+         <form onSubmit={this.onSubmit} className="login__form" >
+           <input
+             className="login__form__input"
+             type="email"
+             ref={(el) => { this.user.email = el; }}
+             name="email"
+             placeholder="Email"
+           />
+           <input
+             className="login__form__input"
+             type="password"
+             ref={(el) => { this.user.password = el; }}
+             name="password"
+             placeholder="Password"
+           />
+           <button className="button button__login">Sign Up</button>
+         </form>
+         <Link className="login__text" to="/login">
+          Have an Account?
+        </Link>
+       </div>
+     </div>
+    );
   }
   render() {
     if (this.state.loggedIn) {
