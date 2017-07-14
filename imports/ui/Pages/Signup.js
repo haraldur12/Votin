@@ -24,10 +24,12 @@ class Signup extends Component {
     e.preventDefault();
     const email = this.user.email.value.trim();
     const password = this.user.password.value.trim();
+    const username = this.user.username.value.trim();
+
     if (password.length < 9) {
       this.setState({ error: 'Password must be more than 8 characters long' });
     }
-    this.props.createUser({ email, password }, (err) => {
+    this.props.createUser({ email, password, username }, (err) => {
       if (err) {
         this.setState({ error: err.reason });
       } else {
@@ -41,6 +43,13 @@ class Signup extends Component {
        <div className="login__box">
          <h1>Signup</h1>
          <form onSubmit={this.onSubmit} className="login__form" >
+           <input
+             className="login__form__input"
+             type="text"
+             ref={(el) => { this.user.username = el; }}
+             name="email"
+             placeholder="Username"
+           />
            <input
              className="login__form__input"
              type="email"

@@ -24,8 +24,14 @@
   line-height: 0;
   font-size: 15px;
 }
+.dropdown__menu {
+  &:before {
+    content : 'Menu'
+  }
+}
 .dropdown:hover .dropdown__menu {
   line-height: 1;
   font-size:2rem;
   margin-bottom: 0;
+
 }

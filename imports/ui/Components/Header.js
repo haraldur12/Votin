@@ -11,7 +11,7 @@ const Header = ({ title }) => (
     </div>
     {Meteor.userId() ? <Logout /> :
     <div className="dropdown">
-      <button className="button header__navigation dropdown__menu"> Menu </button>
+      <button className="button header__navigation dropdown__menu" />
       <div className="dropdown-content">
         <Link to="/login" className="button header__navigation">Login</Link>
         <Link to="/signup" className="button header__navigation">Signup</Link>
