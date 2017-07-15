@@ -43,15 +43,15 @@ export default class AddQuestion extends Component {
   }
 
   handleQuestion() {
-    if (this.state.currentQuestion.length <= 60) {
+    if (this.state.currentQuestion.length <= 20) {
       this.setState({
-        error: 'The question must be at least 60 characters'
+        error: 'The question must be at least 20 characters'
       });
     } else {
-      this.setState({
-        question: this.state.currentQuestion
-      });
-    }
+    this.setState({
+      question: this.state.currentQuestion
+    });
+  }
   }
   handleResponse() {
     if (this.state.currentResponse !== '') {
@@ -102,7 +102,7 @@ export default class AddQuestion extends Component {
         <FormChoice updateResponses={this.updateResponses} handleResponse={this.handleResponse} />
         <QuestionBox question={this.state.question} />
         <RadioBoxList responses={this.state.radioboxes} />
-        {this.state.done && this.state.radioboxes.length > 1 && this.state.question.length > 60 ?
+        {this.state.done && this.state.radioboxes.length > 1 && this.state.question.length > 20 ?
           <FormCreate submitForm={this.createForm} message={'Create Form'} /> :
           <FormDone handleStatus={this.handleStatus} /> }
       </div>
