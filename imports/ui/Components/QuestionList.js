@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import MyQuestions from './User/MyQuestions';
 
-
+// For each question user owns a component renders using the MyQuestions
 const QuestionList = ({ question, id, questionIndex, privacy }) => (
   <div className="wrapper">
     <MyQuestions privacy={privacy} questionIndex={questionIndex} viewID={id} question={question} />

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Meteor } from 'meteor/meteor';
 import { Link } from 'react-router-dom';
 import CopyToClipboard from 'react-copy-to-clipboard';
-import { FaUnlockAlt, FaLock, FaQuestion, FaCopy, FaQrcode, FaEye } from 'react-icons/lib/fa';
+import { FaUnlockAlt, FaLock, FaCopy, FaQrcode, FaEye } from 'react-icons/lib/fa';
 import MdPictureAsPdf from 'react-icons/lib/md/picture-as-pdf';
 import Delete from 'react-icons/lib/md/delete';
 
@@ -18,7 +18,6 @@ class MyQuestions extends Component {
   }
   setPrivacy() {
     Meteor.call('questions.setPrivacy', this.props.viewID, !this.props.privacy);
-    console.log(!this.props.privacy);
   }
   removeQuestion() {
     Meteor.call('questions.removeQuestion', this.props.viewID);
@@ -31,12 +30,12 @@ class MyQuestions extends Component {
           : null
         }
         <p className="item">
-          {this.props.questionIndex} ) {this.props.question} <FaQuestion />
+          {this.props.questionIndex} ) {this.props.question}
         </p>
         <div className="form__share">
           <div className="form__share__buttons">
             <CopyToClipboard
-              text={`http://votinio.herokuapp.co/question/${this.props.viewID}`}
+              text={`http://votinio.herokuapp.com/question/${this.props.viewID}`}
               onCopy={() => this.setState({ copied: true })}
             >
               <button

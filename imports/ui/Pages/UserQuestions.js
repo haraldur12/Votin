@@ -6,7 +6,6 @@ import { Meteor } from 'meteor/meteor';
 import { Questions } from '../../api/Questions';
 import QuestionList from '../Components/QuestionList';
 import Message from '../Components/Message';
-import ErrorMessage from '../Components/Error';
 
 class UserQuestions extends Component {
   constructor(props) {

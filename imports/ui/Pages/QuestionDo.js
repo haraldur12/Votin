@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Meteor } from 'meteor/meteor';
 import { createContainer } from 'meteor/react-meteor-data';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import Header from '../Components/Header';
@@ -25,6 +25,7 @@ class QuestionDo extends Component {
     this.postForm = this.postForm.bind(this);
     this.renderMessage = this.renderMessage.bind(this);
     this.renderQuestion = this.renderQuestion.bind(this);
+    this.authentication = this.authentication.bind(this);
   }
   setSurveyValue(evt) {
     this.setState({
@@ -43,18 +44,18 @@ class QuestionDo extends Component {
     Meteor.call('questions.feedbackUpdate', this.props.currentQuestionID, feedback);
     this.setState({ submitted: true });
   }
-  renderMessage() {
+  authentication() {
+    if (this.props.questions.authenticated && !!Meteor.userId()) {
+      return <FormCreate submitForm={this.postForm} message={'Done!'} />;
+    } else if (!this.props.questions.authenticated) {
+      return <FormCreate submitForm={this.postForm} message={'Done!'} />;
+    }
     return (
-      <div className="wrapper">
-        <p className="survey__start">Welcome!</p>
-        <div className="button__survey--start">
-          <button
-            className="button button__survey--start--next"
-            onClick={this.startSurvey}
-          >
-            Next
-          </button>
-        </div>
+      <div className="item">
+        <p className="item__message">
+            This is available for authenticated users.
+            Please <Link to="/login">login.</Link>
+        </p>
       </div>
     );
   }
@@ -72,7 +73,22 @@ class QuestionDo extends Component {
             responses={this.props.questions ? this.props.questions.responses : []}
           />
         </div>
-        <FormCreate submitForm={this.postForm} message={'Done!'} />
+        {this.authentication()}
+      </div>
+    );
+  }
+  renderMessage() {
+    return (
+      <div className="wrapper">
+        <p className="survey__start">Welcome!</p>
+        <div className="button__survey--start">
+          <button
+            className="button button__survey--start--next"
+            onClick={this.startSurvey}
+          >
+            Next
+          </button>
+        </div>
       </div>
     );
   }

@@ -28,14 +28,16 @@ class Signup extends Component {
 
     if (password.length < 9) {
       this.setState({ error: 'Password must be more than 8 characters long' });
+    } else {
+      this.props.createUser({ email, password, username }, (err) => {
+        if (err) {
+          this.setState({ error: err.reason });
+        } else {
+          Meteor.call('sendVerificationLink');
+          this.setState({ error: '', registered: !!Meteor.userId() });
+        }
+      });
     }
-    this.props.createUser({ email, password, username }, (err) => {
-      if (err) {
-        this.setState({ error: err.reason });
-      } else {
-        this.setState({ error: '', registered: !!Meteor.userId() });
-      }
-    });
   }
   renderForm() {
     return this.state.registered ? <Redirect to="/surveyEditor" /> :
@@ -65,10 +67,10 @@ class Signup extends Component {
              placeholder="Password"
            />
            <button className="button button__login">Sign Up</button>
+           <Link className="login__text" to="/login">
+            Have an Account?
+          </Link>
          </form>
-         <Link className="login__text" to="/login">
-          Have an Account?
-        </Link>
        </div>
      </div>
     );

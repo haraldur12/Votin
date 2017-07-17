@@ -9,6 +9,8 @@ import FormQuestion from '../Form/FormQuestion';
 import FormChoice from '../Form/FormChoice';
 import FormCreate from '../Form/FormCreate';
 import FormDone from '../Form/FormDone';
+import FormVoteSetting from '../Form/FormVoteSetting';
+
 import ErrorMessage from '../Components/Error';
 
 export default class AddQuestion extends Component {
@@ -30,6 +32,7 @@ export default class AddQuestion extends Component {
     this.handleResponse = this.handleResponse.bind(this);
     this.handleStatus = this.handleStatus.bind(this);
     this.createForm = this.createForm.bind(this);
+    this.handleSetting = this.handleSetting.bind(this);
   }
   updateQuestion(e) {
     this.setState({
@@ -41,6 +44,12 @@ export default class AddQuestion extends Component {
       currentResponse: e.target.value
     });
   }
+  handleSetting(e) {
+    this.setState({
+      authenticated: e.target.value
+    }, () => console.log(this.state.authenticated)
+);
+  }
 
   handleQuestion() {
     if (this.state.currentQuestion.length <= 20) {
@@ -48,10 +57,10 @@ export default class AddQuestion extends Component {
         error: 'The question must be at least 20 characters'
       });
     } else {
-    this.setState({
-      question: this.state.currentQuestion
-    });
-  }
+      this.setState({
+        question: this.state.currentQuestion
+      });
+    }
   }
   handleResponse() {
     if (this.state.currentResponse !== '') {
@@ -77,8 +86,13 @@ export default class AddQuestion extends Component {
       currentResponse: ''
     });
     e.preventDefault();
+    const authenticated = this.state.authenticated === 'true' ? true : false;
     const feedbacks = this.state.radioboxes.map(response => ({ response, count: 0 }));
-    const question = { question: this.state.question, responses: this.state.radioboxes, feedbacks };
+    const question = { question: this.state.question,
+      responses: this.state.radioboxes,
+      feedbacks,
+      authenticated
+    };
     Meteor.call('questions.insert', question, (err, res) => {
       if (!err) {
         this.setState({
@@ -98,6 +112,7 @@ export default class AddQuestion extends Component {
         {this.state.error ? <ErrorMessage errorMessage={this.state.error} /> : null}
         {this.state.submitted ? <FormShare viewID={this.state.viewID} /> :
         <p className="item item__message">Upon completation you will get a sharable link.</p>}
+        <FormVoteSetting handleSetting={this.handleSetting} />
         <FormQuestion updateQuestion={this.updateQuestion} handleQuestion={this.handleQuestion} />
         <FormChoice updateResponses={this.updateResponses} handleResponse={this.handleResponse} />
         <QuestionBox question={this.state.question} />

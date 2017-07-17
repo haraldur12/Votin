@@ -57,10 +57,10 @@ class Login extends Component {
                 placeholder="Password"
               />
               <button className="button button__login">Login</button>
+              <Link className="login__text" to="/signup">
+                Don't Have an Account?
+              </Link>
             </form>
-            <Link className="login__text" to="/signup">
-              Don't Have an Account?
-            </Link>
           </div>
         </div>
       </div>

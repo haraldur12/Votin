@@ -7,7 +7,7 @@ import ChartIndex from './ChartIndex';
 export default function ViewData(props) {
   return (
     <div>
-      <Header title="Showing results for your question" />
+      <Header title="Results" />
       <ChartIndex id={props.match.params.id} />
     </div>
   );
