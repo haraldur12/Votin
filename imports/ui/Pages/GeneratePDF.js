@@ -6,10 +6,6 @@ import ChartIndex from '../Charts/ChartIndex';
 import Header from '../Components/Header';
 
 export default class GeneratePDF extends Component {
-  constructor(props) {
-    super(props);
-    this.printDocument = this.printDocument.bind(this);
-  }
   printDocument() {
     const input = this.pdf;
     html2canvas(input)
