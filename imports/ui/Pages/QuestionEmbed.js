@@ -4,15 +4,13 @@ import { createContainer } from 'meteor/react-meteor-data';
 import { Redirect, Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-import Header from '../Components/Header';
 import { Questions } from '../../api/Questions';
-import Message from '../Components/Message';
 import QuestionBox from '../Components/QuestionBox';
 import RadioBoxList from '../Components/RadioBoxList';
 import FormCreate from '../Form/FormCreate';
 import Private from '../Components/Private';
 
-class QuestionDo extends Component {
+class QuestionEmbed extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -69,17 +67,16 @@ class QuestionDo extends Component {
       return <Private question={this.props.questions.question} />;
     }
     return (
-      <div>
-        <Header title="Survey" />
-        <Message message="Please pick your answer." />
-        <QuestionBox question={this.props.questions ? this.props.questions.question : 'This is not a valid question url.'} />
-        <div onChange={this.setSurveyValue}>
-          <RadioBoxList
-            responses={this.props.questions ? this.props.questions.responses : []}
-          />
-        </div>
-        {this.authentication()}
-      </div>
+      this.props.questions ?
+        <div>
+          <QuestionBox question={this.props.questions ? this.props.questions.question : 'This is not a valid question url.'} />
+          <div onChange={this.setSurveyValue}>
+            <RadioBoxList
+              responses={this.props.questions ? this.props.questions.responses : []}
+            />
+          </div>
+          {this.authentication()}
+        </div> : <p> Loading question </p>
     );
   }
   renderMessage() {
@@ -105,14 +102,12 @@ class QuestionDo extends Component {
     }
     return (
       <div>
-        {this.state.welcome ?
-            this.renderQuestion()
-         : this.renderMessage() }
+        {this.props.questions ? this.renderQuestion() : <p>Loading...</p> }
       </div>
     );
   }
 }
-QuestionDo.propTypes = {
+QuestionEmbed.propTypes = {
   questions: PropTypes.object,
   currentQuestionID: PropTypes.string
 };
@@ -123,4 +118,4 @@ export default createContainer((props) => {
     questions: Questions.findOne({ _id: props.match.params.id }),
     currentQuestionID: props.match.params.id
   };
-}, QuestionDo);
+}, QuestionEmbed);

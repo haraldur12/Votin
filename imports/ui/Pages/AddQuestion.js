@@ -47,8 +47,7 @@ export default class AddQuestion extends Component {
   handleSetting(e) {
     this.setState({
       authenticated: e.target.value
-    }, () => console.log(this.state.authenticated)
-);
+    });
   }
 
   handleQuestion() {
@@ -74,6 +73,12 @@ export default class AddQuestion extends Component {
     this.setState({
       done: true
     });
+  }
+  removeResponse(e) {
+    const responses = this.state.radioboxes;
+    const index = responses.indexOf(e.target.value);
+    responses.splice(index, 1);
+    this.setState({ radioboxes: responses });
   }
   createForm(e) {
     // upon creating the form resets the contents of the form
@@ -116,7 +121,7 @@ export default class AddQuestion extends Component {
         <FormQuestion updateQuestion={this.updateQuestion} handleQuestion={this.handleQuestion} />
         <FormChoice updateResponses={this.updateResponses} handleResponse={this.handleResponse} />
         <QuestionBox question={this.state.question} />
-        <RadioBoxList responses={this.state.radioboxes} />
+        <RadioBoxList responses={this.state.radioboxes}  />
         {this.state.done && this.state.radioboxes.length > 1 && this.state.question.length > 20 ?
           <FormCreate submitForm={this.createForm} message={'Create Form'} /> :
           <FormDone handleStatus={this.handleStatus} /> }

@@ -1,6 +1,7 @@
 import React from 'react';
-import Header from '../Header';
 import Point from 'react-icons/lib/md/panorama-fish-eye';
+
+import Header from '../Header';
 
 const How = () => (
   <div>
@@ -18,6 +19,9 @@ const How = () => (
           <li className="about__list__item"><Point /> Generate a QR. </li>
           <li className="about__list__item"><Point /> Export as PDF.</li>
           <li className="about__list__item"><Point /> Share direct link.</li>
+          <li className="about__list__item"><Point />
+            Embed into your webpage.
+          </li>
         </ul>
         <p className="about__text">Privacy </p>
         <ul className="about__list">

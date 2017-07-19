@@ -1,6 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import { Mongo } from 'meteor/mongo';
-import { check } from 'meteor/check'
+import { check } from 'meteor/check';
 import SimpleSchema from 'simpl-schema';
 
 const Questions = new Mongo.Collection('questions');
@@ -16,7 +16,8 @@ Meteor.methods({
     } else {
       return Questions.insert({
         ...question,
-        userId: Meteor.userId()
+        userId: Meteor.userId(),
+        voters: Array
       });
     }
   },
@@ -46,6 +47,12 @@ Meteor.methods({
   'questions.feedbackUpdate': (_id, feedback) => {
     Questions.update({ _id, 'feedbacks.response': feedback }, {
       $inc: { 'feedbacks.$.count': 1 }
+    });
+  },
+  'questions.feedbackUpdateWithAuthentication': (_id, feedback, userId) => {
+    Questions.update({ _id, 'feedbacks.response': feedback }, {
+      $inc: { 'feedbacks.$.count': 1 },
+      $addToSet: { voters: userId }
     });
   }
 });

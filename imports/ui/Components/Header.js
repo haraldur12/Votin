@@ -15,10 +15,11 @@ const Header = ({ title }) => (
       <div className="dropdown-content">
         <Link to="/login" className="button header__navigation">Login</Link>
         <Link to="/signup" className="button header__navigation">Signup</Link>
-        {/* <Link to="/search" className="button header__navigation">Search</Link> */}
+        <Link to="/search" className="button header__navigation">Search</Link>
+        <Link to="/developer" className="button header__navigation">Developers</Link>
         <Link to="/about" className="button header__navigation">About</Link>
-        <Link to="/How" className="button header__navigation">How it Works</Link>
-        {/* <Link to="/tos" className="button header__navigation">Terms of Service</Link> */}
+        <Link to="/how" className="button header__navigation">How it Works</Link>
+        <Link to="/tos" className="button header__navigation">Terms of Service</Link> */}
       </div>
     </div>
   }
